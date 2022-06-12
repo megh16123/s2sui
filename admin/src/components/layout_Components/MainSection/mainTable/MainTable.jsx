@@ -1,8 +1,10 @@
 import React from "react";
+import MoreInfo from "../../MoreInfoModals";
+import RemoveStudent from "../../RemoveStudentModals";
 
 function MainTable() {
     const style = {
-        backgroundColor:"#cccccc !important"
+        backgroundColor: "#cccccc !important"
     };
 
     return (
@@ -26,21 +28,13 @@ function MainTable() {
                                     <th scope="row">1</th>
                                     <td>Mark</td>
                                     <td>Otto</td>
-                                    <td><a className="btn btn-dark action-button" data-bs-toggle="modal"
-                                        href="#removeStudentModal">Remove Student</a><a
-                                            className="btn btn-dark ms-2 action-button mt-2 mt-md-0 "
-                                            data-bs-toggle="modal" href="#more-info-modal">More
-                                            Info</a></td>
+                                    <td><RemoveStudent />&nbsp;&nbsp;<MoreInfo /></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">2</th>
                                     <td>Jacob</td>
                                     <td>Thornton</td>
-                                    <td><a className="btn btn-dark action-button" data-bs-toggle="modal"
-                                        href="#removeStudentModal">Remove Student</a><a
-                                            className="btn btn-dark ms-2 action-button mt-2 mt-md-0 "
-                                            data-bs-toggle="modal" href="#more-info-modal">More
-                                            Info</a></td>
+                                    <td><RemoveStudent />&nbsp;&nbsp;<MoreInfo /></td>
                                 </tr>
                             </tbody>
                         </table>

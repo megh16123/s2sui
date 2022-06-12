@@ -1,50 +1,84 @@
-import React from "react";
+import React, { useState } from "react";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 
-function RemoveStudentModals() {
+function RemoveStudent() {
+    // For Modal 1
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+    // For Modal 2
+    const [show2, setShow2] = useState(false);
+
+    const handleClose2 = () => setShow2(false);
+    const handleShow2 = () => setShow2(true);
+
+
     return (
         <>
-            <div className="modal fade" id="removeStudentModal" aria-hidden="true" aria-labelledby="removeStudentModalLabel"
-                tabindex="-1">
-                <div className="modal-dialog modal-dialog-centered">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h5 className="modal-title" id="removeStudentModalLabel">Remove a student</h5>
-                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div className="modal-body">
-                            SHOW STUDENT INFO HERE
-                            <br /><br />
-                            <span className="caution-message">NOTE: Once you remove the student, all the information of the student
-                                will be deleted the database
-                            </span>
-                        </div>
-                        <div className="modal-footer">
-                            Do you want to remove &lt; name of student &gt; ? <button className="btn btn-dark"
-                                data-bs-target="#removeStudentModal2" data-bs-toggle="modal">Yes</button><button
-                                    className="btn btn-light" data-bs-dismiss="modal" data-bs-toggle="modal">No</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div className="modal fade" id="removeStudentModal2" aria-hidden="true" aria-labelledby="removeStudentModalLabel2"
-                tabindex="-1">
-                <div className="modal-dialog modal-dialog-centered">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h5 className="modal-title" id="removeStudentModalLabel2">Student Removed</h5>
-                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div className="modal-body">
-                            &lt; Name of student &gt; has been removed
-                        </div>
-                        <div className="modal-footer">
-                            <button className="btn btn-dark" data-bs-dismiss="modal" data-bs-toggle="modal">OK</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </>
-    )
-};
+            {/* Modal 1 */}
+            <Button variant="dark" onClick={handleShow}>
+                Remove Student 
+            </Button>
 
-export default RemoveStudentModals;
+            <Modal
+                show={show}
+                onHide={handleClose}
+                backdrop="static"
+                keyboard={false}
+            >
+                <Modal.Header closeButton>
+                    <Modal.Title>Remove a student</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    SHOW STUDENT INFO HERE
+                    <br /><br />
+                    <span className="caution-message">NOTE: Once you remove the student, all the information of the student
+                        will be deleted the database
+                    </span>        
+                </Modal.Body>
+                <Modal.Footer>
+                Do you want to remove &lt; name of student &gt; ? 
+                    <Button variant="outline-dark" onClick={handleClose}>
+                        No
+                    </Button>
+                    <Button
+                        variant="dark"
+                        onClick={() => {
+                            handleShow2();
+                            handleClose();
+                        }}
+                    >
+                        Yes
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+
+
+            {/* Modal 2 */}
+
+            <Modal
+                show={show2}
+                onHide={handleClose2}
+                backdrop="static"
+                keyboard={false}
+            >
+                <Modal.Header>
+                    <Modal.Title>Student Removed</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                &lt; Name of student &gt; has been removed
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="dark" onClick={handleClose2}>
+                        OK
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+        </>
+    );
+}
+
+export default RemoveStudent;
