@@ -2,7 +2,7 @@ import React from "react";
 import MoreInfo from "../../MoreInfoModals";
 import RemoveStudent from "../../RemoveStudentModals";
 
-function MainTable() {
+function MainTable(props) {
     const style = {
         backgroundColor: "#cccccc !important"
     };
@@ -11,7 +11,7 @@ function MainTable() {
         //  Latest Students
         <div className="container">
             <div className="card mt-3">
-                <h5 className="card-header main-color-bg">New Students</h5>
+                <h5 className="card-header main-color-bg">{props.tableHeading}</h5>
                 <div className="card-body p-2">
                     <div className="col-md-12" style={style}>
                         <table className="table table-hover m-0" id="studentTable">

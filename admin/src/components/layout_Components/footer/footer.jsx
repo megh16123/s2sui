@@ -1,10 +1,11 @@
 import React from "react";
 import './footer.css';
 
-function Footer() {
+function Footer(props) {
   const currentYear = new Date().getFullYear();
+
   return (
-    <footer>
+    <footer className={props.page==="Login"?'position-fixed':''}>
       <p>Copyright S2S, &copy; {currentYear}</p>
     </footer>
   );
