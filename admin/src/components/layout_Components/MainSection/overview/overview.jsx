@@ -3,6 +3,29 @@ import "./overview.css";
 import { NavLink } from "react-router-dom";
 
 function Overview(props) {
+     const [studentCount,setcount] = React.useState(0);
+    const [teacherCount,setteacherCount] = React.useState(0);
+
+    React.useEffect(() => {
+        const fetchData = async () => {
+            setcount(0);
+            setteacherCount(0);
+            try {
+                const result = await axios(
+                    "http://localhost:3001/student/allcount"
+                );
+                // const result1 = await axios(
+                //     "http://localhost:3001/teacher/allcount"
+                // );
+                // setteacherCount(result1.data.count);
+                setcount(result.data.count);
+            } catch (error) {
+                setteacherCount(0);
+            }
+        };
+        fetchData();
+    }, []);
+
     function DataComponent() {
         if (props.page === "student") {
             return (
@@ -86,7 +109,7 @@ function Overview(props) {
                         <div>
                             <div className="well">
                                 <h2>
-                                    <i className="fas fa-graduation-cap"></i> 200
+                                    <i className="fas fa-graduation-cap"></i> {studentCount}
                                 </h2>
                                 <h4>Students</h4>
                             </div>
@@ -97,7 +120,7 @@ function Overview(props) {
                         <div>
                             <div className="well">
                                 <h2>
-                                    <i className="fas fa-chalkboard-teacher"></i> 200
+                                    <i className="fas fa-chalkboard-teacher"></i> {teacherCount}
                                 </h2>
                                 <h4>Teachers</h4>
                             </div>
@@ -126,14 +149,14 @@ function Overview(props) {
                         className="list-group-item list-group-item-action"
                     >
                         <i className="fas fa-graduation-cap"></i>
-                        Students <span className="badge bg-secondary ">100</span>
+                        Students <span className="badge bg-secondary ">{studentCount}</span>
                     </NavLink>
                     <NavLink
                         to="/teacher"
                         className="list-group-item list-group-item-action"
                     >
                         <i className="fas fa-chalkboard-teacher"></i> Teachers{" "}
-                        <span className="badge bg-secondary ">20</span>
+                        <span className="badge bg-secondary ">{teacherCount}</span>
                     </NavLink>
                 </div>
             </div>
