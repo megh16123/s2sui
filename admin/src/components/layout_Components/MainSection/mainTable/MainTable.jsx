@@ -6,7 +6,16 @@ function MainTable(props) {
     const style = {
         backgroundColor: "#cccccc !important"
     };
+    const [data,setData] = React.useState([]);
+React.useEffect(() => {
+const fetchData = async () => {
+    const response = await fetch("http://localhost:3001/student/studentdata");
+    const dat = await response.json();
+    setData(dat);
+}
+fetchData();
 
+}, [props.students]);
     return (
         //  Latest Students
         <div className="container">
