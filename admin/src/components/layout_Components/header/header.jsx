@@ -54,7 +54,9 @@ function Header(props) {
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/">
+                <NavLink onClick={()=>{
+                  sessionStorage.removeItem("token");
+                }} className="nav-link" to="/">
                   Log Out
                 </NavLink>
               </li>
