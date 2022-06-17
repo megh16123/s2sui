@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from 'react-bootstrap/Form';
 import Modal from "react-bootstrap/Modal";
+import axios from "axios";
 
-function MoreInfo() {
+function MoreInfo({email,classes,fee}) {
   // For Modal 1
   const [show, setShow] = useState(false);
-
+  const [student,setStudent] = useState({});
+  const [fees,setfee] = useState(0);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -21,6 +23,37 @@ function MoreInfo() {
 
   const handleClose3 = () => setShow3(false);
   const handleShow3 = () => setShow3(true);
+
+  React.useEffect(() => {
+    const fetchData = async () => {
+        try {
+            const result = await axios.post('http://localhost:3001/student/getbymail',{email:email});
+            setStudent(result.data);
+        } catch (error) {
+            setStudent({});
+        }
+    };
+
+    fetchData();
+  }, [email]);
+
+  const markfee = async()=>{
+    try {
+      const result  = await axios.post('http://localhost:3001/student/updatefee',{email:email,fee:fees});
+      if(result.status===200){
+        let st = student;
+        st.feepaid = result.data.fees;
+        setStudent(st)
+        handleShow3();
+        handleClose2();
+      }else{
+        console.error(result.error);
+      }
+    } catch (error) {
+      setfee(0);
+    }
+  }
+
   return (
     <>
       {/* Modal 1 */}
@@ -35,10 +68,18 @@ function MoreInfo() {
         keyboard={false}
       >
         <Modal.Header closeButton>
-          <Modal.Title>&lt;Student Name&gt;</Modal.Title>
+          <Modal.Title>&lt;{student.name}&gt;</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          Show information of &lt;Student Name&gt; with the number of due fee months.
+          Name : {student.name}
+          <br />
+          Email : {student.email}
+          <br />
+          Classes : {classes.join(', ')}
+          <br />
+          TotalFee: {fee}
+          <br />
+          Fee Due : {fee-student.feepaid}
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
@@ -69,22 +110,18 @@ function MoreInfo() {
         </Modal.Header>
         <Modal.Body>
           <Form>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Enter the number of months fee has been paid for (in numbers)</Form.Label>
-              <Form.Control
-                type="number"
-                required
-                autoFocus
-              />
-            </Form.Group>
             <Form.Group
               className="mb-3"
               controlId="exampleForm.ControlTextarea1"
             >
-              <Form.Label>Enter the total amount paid :</Form.Label>
+              <Form.Label>Enter the amount paid :</Form.Label>
               <Form.Control
                 type="number"
                 required
+                value={fees}
+                onChange={(e)=>{
+                  setfee(e.target.value)
+                }}
               />
             </Form.Group>
           </Form>
@@ -93,8 +130,7 @@ function MoreInfo() {
           <Button
             variant="dark"
             onClick={() => {
-              handleShow3();
-              handleClose2();
+              markfee();
             }}
           >
             Mark Fee Submission
@@ -114,7 +150,7 @@ function MoreInfo() {
           <Modal.Title>Fee Submission Marked</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          Fee submission has been marked for &lt;Student Name&gt;
+          Fee submission has been marked for &lt;{student.name}&gt;
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose3}>

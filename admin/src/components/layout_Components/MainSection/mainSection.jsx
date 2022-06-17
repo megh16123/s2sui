@@ -9,7 +9,7 @@ function mainSection (props){
         <section id="main">
             <div class="container">
                 <div class="row">
-                <Overview page={props.page}/>
+                <Overview page={props.page} data={props.data}/>
                 <MainTable tableHeading={props.tableHeading}/>
                 </div>
             </div>

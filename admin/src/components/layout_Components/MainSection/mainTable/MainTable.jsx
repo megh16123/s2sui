@@ -6,7 +6,17 @@ function MainTable(props) {
     const style = {
         backgroundColor: "#cccccc !important"
     };
+    
+const [data,setData] = React.useState([]);
+React.useEffect(() => {
+const fetchData = async () => {
+    const response = await fetch("http://localhost:3001/student/studentdata");
+    const dat = await response.json();
+    setData(dat);
+}
+fetchData();
 
+}, [props.students]);
     return (
         //  Latest Students
         <div className="container">
@@ -24,18 +34,19 @@ function MainTable(props) {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td><RemoveStudent />&nbsp;&nbsp;<MoreInfo /></td>
+                              <tr key={-1}>
+                                    <th scope="row"></th>
+                                    <td>{null}</td>
+                                    <td>{null}</td>
                                 </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td><RemoveStudent />&nbsp;&nbsp;<MoreInfo /></td>
+                            {data.map((item, index) => (
+                                <tr key={index}>
+                                    <th scope="row">{index+1}</th>
+                                    <td>{item._id}</td>
+                                    <td>{item.classes.join(', ')}</td>
+                                    <td><RemoveStudent email={item._id} />&nbsp;&nbsp;<MoreInfo email={item._id} classes={item.classes} fee={item.fee}/></td>
                                 </tr>
+                            ))}
                             </tbody>
                         </table>
                     </div>

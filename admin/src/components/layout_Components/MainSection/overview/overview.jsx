@@ -1,10 +1,40 @@
 import React from "react";
 import "./overview.css";
 import { NavLink } from "react-router-dom";
-
+import axios from "axios";
 function Overview(props) {
+     const [studentCount,setcount] = React.useState(0);
+    const [teacherCount,setteacherCount] = React.useState(0);
+
+    React.useEffect(() => {
+        const fetchData = async () => {
+            setcount(0);
+            setteacherCount(0);
+            try {
+                const result = await axios(
+                    "http://localhost:3001/student/allcount"
+                );
+                // const result1 = await axios(
+                //     "http://localhost:3001/teacher/allcount"
+                // );
+                // setteacherCount(result1.data.count);
+                setcount(result.data.count);
+            } catch (error) {
+                setteacherCount(0);
+            }
+        };
+        fetchData();
+    }, []);
+
     function DataComponent() {
         if (props.page === "student") {
+            const data = props.data;
+            const ninthclass = data.filter((item) => item.class === 9);
+            const tenthclass = data.filter((item) => item.class === 10);
+            const eleventhclass = data.filter((item) => item.class === 11);
+            const twelthclass = data.filter((item) => item.class === 12);
+            const jeeclass = data.filter((item) => item.class === 13);
+            const neetclass = data.filter((item) => item.class === 14);
             return (
                 <>
                 <div className="card-header main-color-bg">
@@ -16,7 +46,7 @@ function Overview(props) {
                         <div>
                             <div className="well">
                                 <h2>
-                                    200
+                                    {ninthclass.length}
                                 </h2>
                                 <h4>Class 9th</h4>
                             </div>
@@ -27,7 +57,7 @@ function Overview(props) {
                         <div>
                             <div className="well">
                                 <h2>
-                                    200
+                                    {tenthclass.length}
                                 </h2>
                                 <h4>Class 10th</h4>
                             </div>
@@ -37,7 +67,7 @@ function Overview(props) {
                         <div>
                             <div className="well">
                                 <h2>
-                                    200
+                                    {eleventhclass.length}
                                 </h2>
                                 <h4>Class 11th</h4>
                             </div>
@@ -47,7 +77,7 @@ function Overview(props) {
                         <div>
                             <div className="well">
                                 <h2>
-                                    200
+                                    {twelthclass.length}
                                 </h2>
                                 <h4>Class 12th</h4>
                             </div>
@@ -57,7 +87,7 @@ function Overview(props) {
                         <div>
                             <div className="well">
                                 <h2>
-                                    200
+                                    {jeeclass.length}
                                 </h2>
                                 <h4>JEE</h4>
                             </div>
@@ -67,7 +97,7 @@ function Overview(props) {
                         <div>
                             <div className="well">
                                 <h2>
-                                    200
+                                    {neetclass.length}
                                 </h2>
                                 <h4>NEET</h4>
                             </div>
@@ -87,7 +117,7 @@ function Overview(props) {
                         <div>
                             <div className="well">
                                 <h2>
-                                    <i className="fas fa-graduation-cap"></i> 200
+                                    <i className="fas fa-graduation-cap"></i> {studentCount}
                                 </h2>
                                 <h4>Students</h4>
                             </div>
@@ -98,7 +128,7 @@ function Overview(props) {
                         <div>
                             <div className="well">
                                 <h2>
-                                    <i className="fas fa-chalkboard-teacher"></i> 200
+                                    <i className="fas fa-chalkboard-teacher"></i> {teacherCount}
                                 </h2>
                                 <h4>Teachers</h4>
                             </div>
@@ -127,14 +157,14 @@ function Overview(props) {
                         className="list-group-item list-group-item-action"
                     >
                         <i className="fas fa-graduation-cap"></i>
-                        Students <span className="badge bg-secondary ">100</span>
+                        Students <span className="badge bg-secondary ">{studentCount}</span>
                     </NavLink>
                     <NavLink
                         to="/teacher"
                         className="list-group-item list-group-item-action"
                     >
                         <i className="fas fa-chalkboard-teacher"></i> Teachers{" "}
-                        <span className="badge bg-secondary ">20</span>
+                        <span className="badge bg-secondary ">{teacherCount}</span>
                     </NavLink>
                 </div>
             </div>
