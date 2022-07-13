@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import axios from "axios";
-function RemoveStudent({email}) {
+function RemoveModals(props) {
     // For Modal 1
     const [show, setShow] = useState(false);
     const [student,setStudent] = useState({});
+    const [teacher,setTeacher] = useState({});
+
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
@@ -14,22 +16,32 @@ function RemoveStudent({email}) {
 
     const handleClose2 = () => setShow2(false);
     const handleShow2 = () => setShow2(true);
-    React.useEffect(() => {
+    useEffect(() => {
         const fetchData = async () => {
-            try {
-                const result = await axios.post('http://localhost:3001/student/getbymail',{email:email});
-                setStudent(result.data);
-            } catch (error) {
-                setStudent({});
+            if(props.page==="student"){
+                try {
+                    const result = await axios.post('http://localhost:3001/student/getbymail',{email:props.email});
+                    setStudent(result.data);
+                } catch (error) {
+                    setStudent({});
+                }
+            }
+            if(props.page==="teacher"){
+                try {
+                    const result = await axios.post('http://localhost:3001/teacher/',{email:props.email});
+                    setTeacher(result.data);
+                } catch (error) {
+                    setTeacher({});
+                }
             }
         };
     
         fetchData();
-    }, [email]);
+    }, [props.email,props.page]);
 
     const handleRemove = async () => {
         try {
-            const result = await axios.post('http://localhost:3001/student/deleteadmin',{email:email});
+            const result = await axios.post('http://localhost:3001/student/deleteadmin',{email:props.email});
             if(result.status === 200){
             handleShow2();
             handleClose();
@@ -43,7 +55,7 @@ function RemoveStudent({email}) {
         <>
             {/* Modal 1 */}
             <Button variant="dark" onClick={handleShow}>
-                Remove Student 
+                Remove {props.page}
             </Button>
 
             <Modal
@@ -53,21 +65,25 @@ function RemoveStudent({email}) {
                 keyboard={false}
             >
                 <Modal.Header closeButton>
-                    <Modal.Title>Remove a student</Modal.Title>
+                    <Modal.Title>Remove a {props.page}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>     
              {/* Name : {student.name} */}
           <br />
-          Email : {student.email}
+          {props.page==="student" && `Email : ${student.email}` }
+          {props.page==="teacher" && `Email : ${teacher.email}` }
           <br />
-          Fee Due : {student.feeDue}
+          {props.page==="student" && `Fee Due : ${student.feeDue}` }
+          {/* {props.page==="teacher" && `Fee Due : ${teacher.feeDue}` } */}
                     <br /><br />
-                    <span className="caution-message">NOTE: Once you remove the student, all the information of the student
-                        will be deleted the database
+                    <span className="caution-message">{`NOTE: Once you remove the ${props.page}, all the information of the ${props.page}
+                        will be deleted from the database`}
                     </span>        
                 </Modal.Body>
                 <Modal.Footer>
-                Do you want to remove &lt;{student.name} &gt; ? 
+                {props.page==="student" && `Do you want to remove ${student.name} ?` }
+                {props.page==="teacher" && `Do you want to remove ${teacher.name} ?` }
+                
                     <Button variant="outline-dark" onClick={handleClose}>
                         No
                     </Button>
@@ -92,10 +108,11 @@ function RemoveStudent({email}) {
                 keyboard={false}
             >
                 <Modal.Header>
-                    <Modal.Title>Student Removed</Modal.Title>
+                    <Modal.Title>{`${props.page} Removed`}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                &lt; {student.name} &gt; has been removed
+                {props.page==="student" && `&lt; ${student.name} &gt; has been removed`}
+                {props.page==="teacher" && `&lt; ${teacher.name} &gt; has been removed`}
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="dark" onClick={handleClose2}>
@@ -107,4 +124,4 @@ function RemoveStudent({email}) {
     );
 }
 
-export default RemoveStudent;
+export default RemoveModals;

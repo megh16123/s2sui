@@ -14,7 +14,7 @@ function Home() {
     return (
       <>
         <Header headerTitle="Dashboard" breadCrumb={['Dashboard']} />
-        <MainSection tableHeading="New Students"/>
+        <MainSection tableHeading="New Students" column="classes"/>
         <Footer />
       </>
     );

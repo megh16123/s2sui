@@ -1,4 +1,4 @@
-import React from "react";
+import React,{ useState,useEffect } from "react";
 import Header from "../components/layout_Components/header/header"
 import Footer from "../components/layout_Components/footer/footer";
 import MainSection from "../components/layout_Components/MainSection/mainSection";
@@ -7,9 +7,9 @@ import axios from "axios";
 
 function Student() {
   const token = sessionStorage.getItem("token");
-  const [data, setData] = React.useState([]);
+  const [data, setData] = useState([]);
   const navi = useNavigate();
-  React.useEffect(() => {
+  useEffect(() => {
     if (token==null) {
       navi("/");
     }else{
@@ -31,7 +31,7 @@ function Student() {
     return (
       <>
         <Header headerTitle="Students" breadCrumb={['Dashboard','Student']} />
-        <MainSection page="student" data={data} tableHeading="All Students"/>
+        <MainSection page="student" data={data} tableHeading="All Students" column="Classes"/>
         <Footer />
       </>
     );

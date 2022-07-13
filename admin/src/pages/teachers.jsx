@@ -15,7 +15,7 @@ function Teacher() {
     return (
       <>
         <Header headerTitle="Teachers" breadCrumb={['Dashboard','Teachers']} />
-        <MainSection page="teacher" tableHeading="Teachers"/>
+        <MainSection page="teacher" tableHeading="Teachers" column="Subject"/>
         <Footer />
       </>
     );

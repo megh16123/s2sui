@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Form from 'react-bootstrap/Form';
 import Modal from "react-bootstrap/Modal";
 import axios from "axios";
 
-function MoreInfo({email,classes,fee}) {
+function MoreInfo({ email, classes, amount, page }) {
   // For Modal 1
   const [show, setShow] = useState(false);
-  const [student,setStudent] = useState({});
-  const [fees,setfee] = useState(0);
+  const [student, setStudent] = useState({});
+  const [teacher, setTeacher] = useState({});
+  const [fees, setfee] = useState(0);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -24,29 +25,39 @@ function MoreInfo({email,classes,fee}) {
   const handleClose3 = () => setShow3(false);
   const handleShow3 = () => setShow3(true);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const fetchData = async () => {
+      if (page === "student") {
         try {
-            const result = await axios.post('http://localhost:3001/student/getbymail',{email:email});
-            setStudent(result.data);
+          const result = await axios.post('http://localhost:3001/student/getbymail', { email: email });
+          setStudent(result.data);
         } catch (error) {
-            setStudent({});
+          setStudent({});
         }
+      }
+      // if(page==="teacher"){
+      //     try {
+      //         const result = await axios.post('http://localhost:3001/teacher/getbymail',{email:email});
+      //         setTeacher(result.data);
+      //     } catch (error) {
+      //         setTeacher({});
+      //     }
+      // }
     };
 
     fetchData();
-  }, [email]);
+  }, [email,page]);
 
-  const markfee = async()=>{
+  const markfee = async () => {
     try {
-      const result  = await axios.post('http://localhost:3001/student/updatefee',{email:email,fee:fees});
-      if(result.status===200){
+      const result = await axios.post('http://localhost:3001/student/updatefee', { email: email, amount: fees });
+      if (result.status === 200) {
         let st = student;
         st.feepaid = result.data.fees;
         setStudent(st)
         handleShow3();
         handleClose2();
-      }else{
+      } else {
         console.error(result.error);
       }
     } catch (error) {
@@ -68,18 +79,21 @@ function MoreInfo({email,classes,fee}) {
         keyboard={false}
       >
         <Modal.Header closeButton>
-          <Modal.Title>&lt;{student.name}&gt;</Modal.Title>
+          <Modal.Title>{teacher.name}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          Name : {student.name}
+        {page==="student" && 
+          (`Name : ${student.name}
           <br />
-          Email : {student.email}
+          Email : ${student.email}
           <br />
-          Classes : {classes.join(', ')}
+          Classes : ${classes.join(', ')}
           <br />
-          TotalFee: {fee}
+          TotalFee: ${amount}
           <br />
-          Fee Due : {fee-student.feepaid}
+          Fee Due : ${amount - student.feepaid}`)
+        }
+        {page==="teacher" && `INFO ABOUT TEACHER`}
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
@@ -92,7 +106,8 @@ function MoreInfo({email,classes,fee}) {
               handleClose();
             }}
           >
-            Mark Fee Submission
+            {page==="student" && `Mark Fee Submission`}
+            {page==="teacher" && `Mark Salary`}
           </Button>
         </Modal.Footer>
       </Modal>
@@ -106,7 +121,9 @@ function MoreInfo({email,classes,fee}) {
         keyboard={false}
       >
         <Modal.Header closeButton>
-          <Modal.Title>Marking Fee Submission</Modal.Title>
+          <Modal.Title>{page==="student" && `Marking Fee Submission`}
+          {page==="teacher" && `Marking Salary`}
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
@@ -118,8 +135,9 @@ function MoreInfo({email,classes,fee}) {
               <Form.Control
                 type="number"
                 required
-                value={fees}
-                onChange={(e)=>{
+                value={page==="student" && `${amount}`}
+                // value={page==="teacher" && `${salary}`}
+                onChange={(e) => {
                   setfee(e.target.value)
                 }}
               />
@@ -130,10 +148,13 @@ function MoreInfo({email,classes,fee}) {
           <Button
             variant="dark"
             onClick={() => {
+              // if(page==="teacher"){
               markfee();
+              // } else markSalary();
             }}
           >
-            Mark Fee Submission
+            {page==="student" && `Mark Fee Submission`}
+            {page==="teacher" && `Mark salary`}
           </Button>
         </Modal.Footer>
       </Modal>
@@ -147,10 +168,14 @@ function MoreInfo({email,classes,fee}) {
         keyboard={false}
       >
         <Modal.Header>
-          <Modal.Title>Fee Submission Marked</Modal.Title>
+        <Modal.Title>
+            {page==="student" && `Fee Submission Marked`}
+            {page==="teacher" && `Salary marked`}
+        </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          Fee submission has been marked for &lt;{student.name}&gt;
+        {page==="student" && `Fee submission has been marked for &lt;${student.name}&gt;`}
+        {page==="teacher" && `Fee submission has been marked for &lt;${teacher.name}&gt;`}
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose3}>

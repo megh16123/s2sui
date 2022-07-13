@@ -22,7 +22,7 @@ function Header(props) {
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
-          <NavLink className="navbar-brand ms-sm-5" to="/">
+          <NavLink className="navbar-brand ms-sm-5" to="/home">
             S2S Admin
           </NavLink>
           <button

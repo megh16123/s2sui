@@ -1,5 +1,5 @@
 import React from "react";
-import Overview from './overview/overview';
+import Overview from './overview/Overview';
 import MainTable from "./mainTable/MainTable";
 
 import "./mainSection.css";
@@ -7,10 +7,10 @@ import "./mainSection.css";
 function mainSection (props){
     return (
         <section id="main">
-            <div class="container">
-                <div class="row">
+            <div className="container">
+                <div className="row">
                 <Overview page={props.page} data={props.data}/>
-                <MainTable tableHeading={props.tableHeading}/>
+                <MainTable page={props.page} tableHeading={props.tableHeading} column={props.column}/>
                 </div>
             </div>
         </section>

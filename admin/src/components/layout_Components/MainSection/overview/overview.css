@@ -3,6 +3,6 @@
     color: black;
 }
 
-button.col-md-2{
+button.col-md-2, button.col-md-4{
     border: none;
 }
