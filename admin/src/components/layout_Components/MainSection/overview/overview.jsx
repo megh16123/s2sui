@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import axios from "axios";
 import OverviewCard from "./OverviewCard";
 import OverviewOptionCards from "./OverviewOptionCards";
+import AddRecord from "../../AddRecord";
 function Overview(props) {
   const [studentCount, setStudentCount] = useState(0);
   const [teacherCount, setTeacherCount] = useState(0);
@@ -143,11 +144,7 @@ function Overview(props) {
             <i className="fas fa-chalkboard-teacher"></i> Teachers{" "}
             <span className="badge bg-secondary ">{teacherCount}</span>
           </NavLink>
-          {(props.page === "teacher" || props.page === "student") && (
-            <button type="button" class="btn btn-dark mt-3">
-              <i class="fas fa-user-plus"></i> {`Add ${props.page}`}
-            </button>
-          )}
+          {(props.page === "teacher" || props.page === "student") && (<AddRecord page={props.page}/> )}
         </div>
       </div>
       <div className="col-md-9" id="overview">

@@ -37,7 +37,6 @@ function MainTable(props) {
             )))
         }
         else{
-            console.log("harkate by meghansh");
             return (data.map((item, index) => (
                 <tr key={index}>
                  

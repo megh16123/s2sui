@@ -6,3 +6,7 @@
 button.col-md-2, button.col-md-4{
     border: none;
 }
+
+.d-none{
+    display: none;
+}
