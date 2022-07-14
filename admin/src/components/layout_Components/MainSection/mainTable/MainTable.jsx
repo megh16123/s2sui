@@ -43,7 +43,7 @@ function MainTable(props) {
                     <td>{index}</td>
                     <td>{item.name}</td>
                     <td>{item.qualification}</td>
-                    <td><RemoveModals email={item._id} page={props.page} />&nbsp;&nbsp;<MoreInfo email={item._id} amount={item.salary} page={props.page} /></td>
+                    <td><RemoveModals email={item.email} page={props.page} />&nbsp;&nbsp;<MoreInfo email={item.email} amount={item.salary} page={props.page} /></td>
                 </tr>
             )))  
         }
@@ -70,12 +70,6 @@ function MainTable(props) {
                                     <td>{null}</td>
                                 </tr>
                                 {datafilt()}
-                                {/* <tr>
-                                    <th scope="row">1</th>
-                                    <td>MEghansh lhendi</td>
-                                    <td>pta ni</td>
-                                    <td><RemoveModals email={item.id} page={props.page} />&nbsp;&nbsp;<MoreInfo email={item.id} classes={item.classes} amount={item.fee} page={props.page}/></td>
-                                </tr> */}
                             </tbody>
                         </table>
                     </div>

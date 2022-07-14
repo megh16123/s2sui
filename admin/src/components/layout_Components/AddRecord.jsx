@@ -2,7 +2,7 @@ import React,{ memo, useCallback, useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
-
+import axios from 'axios';
 const AddRecord = (props) => {
 
   const [show, setShow] = useState(false);
@@ -45,7 +45,18 @@ const AddRecord = (props) => {
     }
   },[props.page,studentFormData,teacherFormData])
 
+const onSubmit = async()=>{
+if(props.page==='student'){
+  const result = await axios.post('http://localhost:3001/student/register',studentFormData)
+  console.log(result)
+  handleClose()
 
+}else{
+  const result = await axios.post('http://localhost:3001/teacher/addteacher',teacherFormData)
+  console.log(result)
+  handleClose()
+}
+}
   return (
     <>
     {console.log("rendered")}
@@ -122,11 +133,11 @@ const AddRecord = (props) => {
             </Form.Group>
             <Form.Group
               className="mb-2">
-              <Form.Label>{`${props.page==="student"?"Fee":"Salary"}`}</Form.Label>
+              <Form.Label>{`${props.page==="student"?"Fee":"salary"}`}</Form.Label>
               <Form.Control
-                name={`${props.page==="student"?"Fee":"Salary"}`}
+                name={`${props.page==="student"?"Fee":"salary"}`}
                 type="string"
-                placeholder={`${props.page==="student"?"Fee":"Salary"}`}
+                placeholder={`${props.page==="student"?"Fee":"salary"}`}
                 onChange={onInputChange}
                 
                 
@@ -149,7 +160,7 @@ const AddRecord = (props) => {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="dark" type="submit">
+          <Button variant="dark" type="submit" onClick={onSubmit}>
             {`Add ${props.page}`}
           </Button>
         </Modal.Footer>
