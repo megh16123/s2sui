@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './Hero.module.scss'
-import Navbar from '../LayoutComponents/Navbar'
-import Footer from '../LayoutComponents/footer'
+import Navbar from '../../LayoutComponents/Navbar'
+import Footer from '../../LayoutComponents/footer'
 function Hero() {
   return (
 

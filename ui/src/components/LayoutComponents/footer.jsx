@@ -1,9 +1,10 @@
 import React from 'react'
 import styles from './footer.module.scss'
 
-function footer() {
+function Footer() {
   return (
-      
+<>
+<hr/>
     <section className={styles.seventh}>
     <div className={styles.upper_div}>
       <div className={styles.left}>
@@ -61,7 +62,8 @@ function footer() {
     </footer>
     
 </section>
+</> 
   )
 }
 
-export default footer
+export default Footer

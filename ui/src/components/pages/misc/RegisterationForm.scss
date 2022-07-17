@@ -1,0 +1,90 @@
+.registerationForm {
+    width: 50%;
+    padding:3%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    color: black;
+    border: 2px solid black;
+    
+    .upperSection{
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .classCheckBoxes {
+        margin: auto;
+
+        div {
+            margin-top: 3%;
+        }
+    }
+
+    .inputContainers {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items:flex-start;
+        margin-left: 2%;
+        margin-top: 2%;
+        flex: 1 1 300px;
+    }
+
+    .checkBoxLabel {
+        margin-left: 7%;
+    }
+
+    p {
+        font-size: 1.3rem;
+        position: relative;
+        margin-left:2%;
+        margin-top: 3%;
+    }
+
+
+    label.checkBoxLabel {
+        position: relative;
+
+        &::before {
+            content: '';
+            background: url('./check-circle.svg');
+            background-position: center;
+            background-size: contain;
+            width: 25px;
+            height: 25px;
+            position: absolute;
+            left: -35px;
+            top:-1px;
+            transform: scale(0) rotateZ(180deg);
+            transition: all 0.4s cubic-bezier(0.54, 0.01, 0, 1.49);
+        }
+
+        &::after{
+            content: '';
+            border: 2px solid #27ae60;
+            background-color: transparent;
+            width:19px;
+            height:19px;
+            position: absolute;
+            left:-34px;
+            border-radius: 50%;
+        }
+    }
+
+    input[type="checkbox"] {
+        display: none;
+    }
+
+    input[type="checkbox"]:checked+label::before {
+        transform: scale(1) rotateZ(0deg);
+    }
+    label{
+        font-size: 1.3rem;
+    }
+
+    input[type="text"], input[type="email"], textarea{
+        width:100%;
+        height:35px;
+        padding:2%;
+    }
+}
