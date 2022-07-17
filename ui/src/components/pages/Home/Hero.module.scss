@@ -68,12 +68,19 @@
 
         }
         .hero_img{
-            width: 50%;
-            height: 60%;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            img{
+
+                // width: 50%;
+                height: 60%;
+            }
+                
         }
     }
     .second{
-        height: 100vh;
+        // height: 100vh;
         padding: 3% 10%;
         background-color: #fbfafb;
         
@@ -162,16 +169,51 @@
     }
     .fifth{
         display: flex;
-        justify-content: space-around;
-        height: 80vh;
-        margin: 7% 10%;
+        justify-content: center;
+        // height: 80vh;
+        padding: 7% 10%;
+        flex-direction: column;
+        .pagination_button_container{
+            
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            button{
+                width: 40px;
+                padding-top: 25%;
+                height: 40px;
+                background-color: #F6F6F5;
+                border-radius: 25%;
+                border: none;
+                outline: none;
+                cursor: pointer;
+            }
+        }
+            .card_container{
+                // height: 500px;
+                display: flex;
+                width: 95%;
+        scroll-behavior: smooth;
+            overflow-x: scroll;
+            -ms-overflow-style: none; /* Internet Explorer 10+ */
+            scrollbar-width: none; /* Firefox */
+            // white-space: nowrap;
+            &::-webkit-scrollbar{
+                display: none;
+            }
+            &:first-child{
+                margin-left: 50%;
+            }
+
         .card{
             display: flex;
-            width: 27%;
+            width: 300px;
             flex-direction: column;
+            margin: 5%;
+
             img{
-                height: 200px;
-                width: 300px;
+                // height: 200px;
+                // width: 300px;
                 border: 1px solid black;
                 border-radius: 15px;
                 margin: 5% 0;
@@ -186,9 +228,13 @@
             }
     }
     }
+    }
     .sixth{
+        display: flex;
         justify-content: center;
-        margin: 5% 10%;
+        // height: 80vh;
+        padding: 7% 10%;
+        flex-direction: column;
         h2{
             text-align: center;
             margin: 3%;
@@ -199,11 +245,36 @@
             margin: 3%;
             font-size: 1.1rem;
         }
-        .mentors_component{
-            margin: 9% auto;
+        .pagination_button_container{
+            
             display: flex;
-            justify-content: space-around;
-            .mentor{
+            justify-content: center;
+            align-items: center;
+            button{
+                width: 40px;
+                padding-top: 25%;
+                height: 40px;
+                background-color: #F6F6F5;
+                border-radius: 25%;
+                border: none;
+                outline: none;
+                cursor: pointer;
+            }
+        }
+        .mentors_component{
+            display: flex;
+                width: 95%;
+        scroll-behavior: smooth;
+            overflow-x: scroll;
+            -ms-overflow-style: none; /* Internet Explorer 10+ */
+            scrollbar-width: none; /* Firefox */
+            // white-space: nowrap;
+            &::-webkit-scrollbar{
+                display: none;
+            }
+           .mentor{
+                margin: 4%;
+             
                 .img{
                     height: 250px;
                     width: 250px;
@@ -225,20 +296,27 @@
     }
    
 }
+.button_slider{
+    display: flex;
+    flex-direction: row;
+}
 @media (max-width:768px){
     .home{
     .hero_section{
-        height: 115vh !important;
+        // height: 115vh !important;
         flex-direction: column !important;
         margin: 0% 5%;
         .hero_content{
             width: 100%;
         }
         .hero_img{
-            transform: translateX(-50%);
-            margin-left: 50%;
-            margin-top: 5%;
-            width: 65%;
+            img{
+
+                transform: translateX(-50%);
+                margin-left: 50%;
+                margin-top: 5%;
+                width: 70%;
+            }
         }
     }
     .just_for_margin{
@@ -246,12 +324,28 @@
     }
     .four{
         padding: 0;
+        height: 40vh;
+        .stats{
+            .card_icon{
+                width: 80px;
+                height: 80px;
+            }
+            h2{
+               font-size:  2rem;
+
+            }
+            p{
+               font-size: 1.2rem;
+            }
+        }
     }
     .fifth{
-        margin: 5%;
+        margin: 1.5%;
+        padding: 0;
     }
     .sixth{
-        margin: 0;
+        margin:1.5% 1.5%  300px 1.5%;
+        padding: 0;
         .mentors_component{
         .mentor{
             .img{

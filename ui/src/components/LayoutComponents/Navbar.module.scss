@@ -29,11 +29,13 @@
         // flex-direction: column;
         position:relative;
         .burger{
-            position:absolute;
+            position:fixed;
             display: flex;
             flex-direction: column;
-            top: 2.5%;
-            right: 1%;
+            top: 3.5%;
+            z-index: 1000;
+            right: 2%;
+
             .line{
                 background-color: black;
                 height: 4px;
@@ -53,10 +55,10 @@
             }
         }
         .navlinks{
-            display: none;
-            width: 100%;
+            // display: none;
+            // width: 100%;
             li{
-                margin: 4% auto;
+                color: white;
             }
         }
 
