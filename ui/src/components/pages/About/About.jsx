@@ -1,9 +1,20 @@
 import React from 'react'
 import styles from './About.module.scss'
+// import Image from 'next/image'
 import Navbar from '../../LayoutComponents/Navbar'
 import Footer from '../../LayoutComponents/footer'
 
 function About() {
+  // const svg= <HTMLElement><svg className={styles.svg} viewBox="0 0 500 150" preserveAspectRatio="none" ><path className={styles.path} d="M251.92,-17.26 C209.59,70.55 285.77,81.41 251.92,151.48 L500.00,150.00 L500.00,0.00 Z" ></path></svg></HTMLElement>;
+  const [width, setWidth] = React.useState(0);
+  // const [svg, showSvg] = React.useState(false);
+  // React.useEffect(() => {
+  //   setWidth(window.innerWidth);
+  // });
+  // if(width>768){
+  //   showSvg(true);
+  // }
+
   return (
     <>
       <div className={styles.about_component}>
@@ -17,7 +28,7 @@ function About() {
             
         </div>
         <div className={styles.right_component}>
-        <img className='lightbulb' src="/logo.png" width="500px" height="500px" alt="lightBulb"></img>
+        <img className='lightbulb' src="/logo.png" alt="lightBulb"></img>
         </div>
     </div>
     </div>
@@ -29,7 +40,7 @@ function About() {
         </div>
         <div className={styles.founder_content}>
         <div className={styles.left_container}>
-        <img className='lightbulb' src="/logo.png" width="500px" height="500px" alt="lightBulb"></img>
+        <img className='lightbulb' src="/logo.png"  alt="lightBulb"></img>
         </div>
         <div className={styles.right_container}>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Suscipit incidunt repellat explicabo culpa labore consectetur odio, totam aliquid? Quod at magnam alias reprehenderit sequi magni, voluptatibus aliquam nobis autem ullam suscipit commodi explicabo velit placeat amet ab, optio dicta. Corrupti aliquam quis voluptate explicabo incidunt?

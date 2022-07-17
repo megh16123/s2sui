@@ -4,8 +4,8 @@ import Classes from "./components/pages/Classes/Classes";
 
 function App() {
   return (
-    <Hero />
-    // <About/>
+    // <Hero />
+    <About/>
     // <Classes />
   );
 }

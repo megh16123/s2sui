@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import styles from './Navbar.module.scss'
-
+// import Image from 'next/image'
 function Navbar() {
   const [showlinks,setShowLinks]=useState(false);
   const [width, setWidth] = React.useState(0);
@@ -37,7 +37,7 @@ function Navbar() {
   return (
     <navbar className={styles.navbar} >
         <div className={styles.logo}>
-            <img src="/logo.png" alt="logo" width="50" height="50"></img>
+            <img src="/logo.png" alt="logo" width={70} height={70}></img>
         </div>
         <ul className={styles.navlinks} style={width<768?showlinks?show:notShow:nothing}>
         <li>Home</li>
