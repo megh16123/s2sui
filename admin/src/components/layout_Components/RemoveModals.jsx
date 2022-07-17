@@ -28,7 +28,7 @@ function RemoveModals(props) {
             }
             if(props.page==="teacher"){
                 try {
-                    const result = await axios.post('http://localhost:3001/teacher/',{email:props.email});
+                    const result = await axios.post('http://localhost:3001/teacher/getteacherbyemail',{email:props.email});
                     setTeacher(result.data);
                 } catch (error) {
                     setTeacher({});
@@ -40,6 +40,7 @@ function RemoveModals(props) {
     }, [props.email,props.page]);
 
     const handleRemove = async () => {
+       if(props.page==='student'){ 
         try {
             const result = await axios.post('http://localhost:3001/student/deleteadmin',{email:props.email});
             if(result.status === 200){
@@ -48,6 +49,17 @@ function RemoveModals(props) {
             }
         } catch (error) {
            handleClose();
+        }
+    }else{
+        try {
+            const result = await axios.post('http://localhost:3001/teacher/deleteteacher',{email:props.email});
+            if(result.status === 200){
+            handleShow2();
+            handleClose();
+            }
+        } catch (error) {
+           handleClose();
+        }
         }
     }
 

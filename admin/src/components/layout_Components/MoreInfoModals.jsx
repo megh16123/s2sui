@@ -35,18 +35,51 @@ function MoreInfo({ email, classes, amount, page }) {
           setStudent({});
         }
       }
-      // if(page==="teacher"){
-      //     try {
-      //         const result = await axios.post('http://localhost:3001/teacher/getbymail',{email:email});
-      //         setTeacher(result.data);
-      //     } catch (error) {
-      //         setTeacher({});
-      //     }
-      // }
+     else if(page==="teacher"){
+          try {
+              const result = await axios.post('http://localhost:3001/teacher/getteacherbyemail',{email:email});
+              setTeacher(result.data);
+          } catch (error) {
+              setTeacher({});
+          }
+      }
     };
 
     fetchData();
   }, [email,page]);
+const renderDat = ()=>{
+  if(page==='student'){
+    return (
+     <>
+     Name: {student.name}
+     <br />
+      Email: {student.email}
+      <br />
+      Classes:{classes.join(', ')}
+      <br />
+      TotalFee: {amount}
+      <br />  
+      Fee Due : {amount - student.feepaid}
+     </>
+    )
+  }else{
+  return(
+    <>
+    Name: {teacher.name}
+    <br />
+    Email : {teacher.email}
+    <br />
+    Qualification : {teacher.qualification}
+    <br />
+    Salary : {teacher.salary}
+    <br/>
+    Address : {teacher.address}
+    <br />
+    Subject: {teacher.subject}
+    </>
+  )
+  }
+}
 
   const markfee = async () => {
     try {
@@ -82,19 +115,9 @@ function MoreInfo({ email, classes, amount, page }) {
           <Modal.Title>{teacher.name}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        {page==="student" && 
-          (`Name : ${student.name}
-          <br />
-          Email : ${student.email}
-          <br />
-          Classes : ${classes.join(', ')}
-          <br />
-          TotalFee: ${amount}
-          <br />
-          Fee Due : ${amount - student.feepaid}`)
-        }
-        {page==="teacher" && `INFO ABOUT TEACHER`}
-        </Modal.Body>
+    {renderDat()}
+       
+         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
