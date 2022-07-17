@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './Hero.module.scss'
-import Navbar from '../LayoutComponents/Navbar'
-import Footer from '../LayoutComponents/footer'
+import Navbar from '../../LayoutComponents/Navbar'
+import Footer from '../../LayoutComponents/footer'
 function Hero() {
   return (
 
@@ -22,7 +22,7 @@ function Hero() {
         </div>
         </div>
         <div className={styles.hero_img}>
-          <img src="/main.png" width="1000px" height="1000px" alt="about-girl"></img>
+          <img src="/main.png" alt="about-girl"></img>
         </div>
       </section>
 
@@ -72,7 +72,7 @@ function Hero() {
         </div>
         </div>
         <div className={styles.hero_img}>
-          <img src="/main-2.png" width="1000px" height="1000px" alt="about-girl"></img>
+          <img src="/main-2.png"  alt="about-girl"></img>
         </div>
       </section>
       <section className={styles.four}>

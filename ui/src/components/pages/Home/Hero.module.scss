@@ -68,8 +68,12 @@
 
         }
         .hero_img{
-            width: 50%;
-            height: 60%;
+            img{
+                // width: 50%;
+                height: 70%;
+            }
+            
+                
         }
     }
     .second{
@@ -235,10 +239,14 @@
             width: 100%;
         }
         .hero_img{
-            transform: translateX(-50%);
-            margin-left: 50%;
-            margin-top: 5%;
-            width: 65%;
+
+            img{
+
+                transform: translateX(-50%);
+                margin-left: 50%;
+                margin-top: 5%;
+                height: 40%;
+            }
         }
     }
     .just_for_margin{
