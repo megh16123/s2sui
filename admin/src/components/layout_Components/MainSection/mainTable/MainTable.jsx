@@ -18,7 +18,17 @@ function MainTable(props) {
             if (props.page === "student") {
                 const response = await fetch("http://localhost:3001/student/studentdata");
                 const dat = await response.json();
-                setData(dat);
+                const d = dat.map((item) => {
+                    item.fee = item.classenrolled.map((it)=>{
+                        return it.fee;
+                    })
+                    item.classenrolled  = item.classenrolled.map((ite) => {
+                        return ite.clas;
+                    });
+                    
+                    return item;
+                })
+                setData(d);
             }
         }
         fetchData();
@@ -30,9 +40,9 @@ function MainTable(props) {
             return (data.map((item, index) => (
                 <tr key={index}>
                     <th scope="row">{index + 1}</th>
-                    <td>{item._id}</td>
-                    <td>{item.classes.join(', ')}</td>
-                    <td><RemoveModals email={item._id} page={props.page} />&nbsp;&nbsp;<MoreInfo email={item._id} classes={item.classes} amount={item.fee} page={props.page} /></td>
+                    <td>{item.name}</td>
+                    <td>{item.classenrolled.join(",")}</td> 
+                    <td><RemoveModals email={item.email} page={props.page} />&nbsp;&nbsp;<MoreInfo data={item} page={props.page} /></td>
                 </tr>
             )))
         }
@@ -43,7 +53,7 @@ function MainTable(props) {
                     <td>{index}</td>
                     <td>{item.name}</td>
                     <td>{item.qualification}</td>
-                    <td><RemoveModals email={item.email} page={props.page} />&nbsp;&nbsp;<MoreInfo email={item.email} amount={item.salary} page={props.page} /></td>
+                    <td><RemoveModals email={item.email} page={props.page} />&nbsp;&nbsp;<MoreInfo data={item} amount={item.salary} page={props.page} /></td>
                 </tr>
             )))  
         }

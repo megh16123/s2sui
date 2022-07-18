@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Modal from "react-bootstrap/Modal";
 import axios from "axios";
 
-function MoreInfo({ email, classes, amount, page }) {
+function MoreInfo({ data,email, page }) {
   // For Modal 1
   const [show, setShow] = useState(false);
   const [student, setStudent] = useState({});
@@ -29,8 +29,7 @@ function MoreInfo({ email, classes, amount, page }) {
     const fetchData = async () => {
       if (page === "student") {
         try {
-          const result = await axios.post('http://localhost:3001/student/getbymail', { email: email });
-          setStudent(result.data);
+          setStudent(data);
         } catch (error) {
           setStudent({});
         }
@@ -46,7 +45,7 @@ function MoreInfo({ email, classes, amount, page }) {
     };
 
     fetchData();
-  }, [email,page]);
+  }, [data,page]);
 const renderDat = ()=>{
   if(page==='student'){
     return (
@@ -55,11 +54,10 @@ const renderDat = ()=>{
      <br />
       Email: {student.email}
       <br />
-      Classes:{classes.join(', ')}
+      Classes: {student.classenrolled.join(' ,')}
       <br />
-      TotalFee: {amount}
-      <br />  
-      Fee Due : {amount - student.feepaid}
+      TotalFee: {}   <br />  
+      Fee Due : { - student.feepaid}
      </>
     )
   }else{
@@ -158,7 +156,7 @@ const renderDat = ()=>{
               <Form.Control
                 type="number"
                 required
-                value={page==="student" && `${amount}`}
+                value={page==="student" && `${0}`}
                 // value={page==="teacher" && `${salary}`}
                 onChange={(e) => {
                   setfee(e.target.value)
