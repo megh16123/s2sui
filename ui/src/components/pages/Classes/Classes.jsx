@@ -1,10 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Footer from '../../LayoutComponents/footer'
 import Navbar from '../../LayoutComponents/Navbar'
+import ContactFrom from '../misc/ContactFrom'
+import Modal from '../misc/Modal'
 import RegisterationForm from '../misc/RegisterationForm'
 import './Classes.scss'
 
 const Classes = () => {
+    const [showModal, setShowModal] = useState(false);
+
+    const displayModal = () => {
+        setShowModal(true);
+           
+    }
+
+    const closeModal = () => {
+        setShowModal(false);
+    }
+
     return (
         <>
             <Navbar />
@@ -13,17 +26,16 @@ const Classes = () => {
                 <div className="heroContent">
                     <h1>Classes</h1>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, quo quod error perferendis ratione possimus natus eveniet nobis ullam eum voluptate deleniti ad animi minus!</p>
-                    <button class="register-button">REGISTER</button>
+                    <Modal title='Book Demo Class' buttonText='Register' showModal={showModal} displayModal={displayModal} closeModal={closeModal}>{<RegisterationForm/>}</Modal>
                 </div>
             </div>
             <div id="cards">
-                <div className="card card-1">NEET/JEE</div>
-                <div className="card card-2">Class 12th</div>
-                <div className="card card-3">Class 11th</div>
-                <div className="card card-4">Class 10th</div>
-                <div className="card card-5">Class 2nd - 9th</div>
+                <div onClick={displayModal} className="card card-1">NEET/JEE</div>
+                <div onClick={displayModal} className="card card-2">Class 12th</div>
+                <div onClick={displayModal} className="card card-3">Class 11th</div>
+                <div onClick={displayModal} className="card card-4">Class 10th</div>
+                <div onClick={displayModal} className="card card-5">Class 2nd - 9th</div>
             </div>
-            <RegisterationForm />
             <Footer/>
         </>
     )

@@ -46,6 +46,7 @@ const RegisterationForm = () => {
                         <label className='checkBoxLabel' htmlFor="neetJee">Class NEET/JEE</label>
                     </div>
                 </div>
+                <button type='submit' className='submitButton'>Submit!!!</button>
             </form>
         </>
     )

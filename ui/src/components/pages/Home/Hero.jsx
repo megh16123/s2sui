@@ -1,13 +1,8 @@
 import React from 'react'
 import styles from './Hero.module.scss'
 import Navbar from '../../LayoutComponents/Navbar'
-<<<<<<< HEAD
-import Footer from '../../LayoutComponents/footer'
-=======
-// import img from 'next/img'
 import Footer from '../../LayoutComponents/footer'
 import { useRef } from "react";
->>>>>>> a5e8f940a08ee60bb1be10e117ac7d7529e89065
 function Hero() {
    const courseSliderRef=useRef();
    const courseSliderRef2=useRef();

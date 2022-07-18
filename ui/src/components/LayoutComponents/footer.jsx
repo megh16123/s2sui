@@ -1,7 +1,19 @@
-import React from 'react'
+import React,{ useState } from 'react'
+import Modal from '../pages/misc/Modal'
+import ContactFrom from '../pages/misc/ContactFrom';
 import styles from './footer.module.scss'
 
 function Footer() {
+  const [showModal, setShowModal] = useState(false);
+
+  const displayModal = () => {
+      setShowModal(true); 
+  }
+
+  const closeModal = () => {
+      setShowModal(false);
+  }
+
   return (
 <>
 <hr/>
@@ -11,9 +23,7 @@ function Footer() {
         Are You Ready To Start Your Course Now
       </div>
       <div className={styles.right}>
-        <div className={styles.contact_now}>
-          Contact Us
-        </div>
+      <Modal title='Contact Us' buttonText='Contact Us' showModal={showModal} displayModal={displayModal} closeModal={closeModal} cssClass="contactForm">{<ContactFrom/>}</Modal>
       </div>
     </div>
 

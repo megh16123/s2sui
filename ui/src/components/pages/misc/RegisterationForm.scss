@@ -1,11 +1,13 @@
 .registerationForm {
-    width: 50%;
+    width: 100%;
     padding:3%;
     margin-left: auto;
     margin-right: auto;
     background-color: white;
     color: black;
-    border: 2px solid black;
+    box-shadow:0px 0px 0px 1px gray inset;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
     
     .upperSection{
         display: flex;
@@ -41,6 +43,23 @@
         margin-top: 3%;
     }
 
+    .submitButton{
+        padding: 1% 2%;
+        margin-top: 5%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        cursor: pointer;
+        border: none;
+        background-color: #FFA115;
+        color: white;
+        font-weight: 500;
+        font-size: 1.2rem;
+        transition: all 0.2s ease-in-out;
+        &:hover{
+            transform:scale(1.1);
+        }
+    }
 
     label.checkBoxLabel {
         position: relative;
