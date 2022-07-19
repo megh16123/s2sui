@@ -18,7 +18,7 @@ function Footer() {
 <>
 <hr/>
     <section className={styles.seventh}>
-    <div className={styles.upper_div}>
+    <div id="footer" className={styles.upper_div}>
       <div className={styles.left}>
         Are You Ready To Start Your Course Now
       </div>

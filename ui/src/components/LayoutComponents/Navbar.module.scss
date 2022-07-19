@@ -21,10 +21,15 @@
             font-weight: 500;
             cursor: pointer;
             font-size: 1.6rem;
+            a{
+                text-decoration: none;
+                color:black;
+            }
         }
     }
 }
-@media (max-width:768px){
+
+@media (max-width:1024px){
     .navbar{
         // flex-direction: column;
         position:relative;
