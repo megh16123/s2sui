@@ -207,8 +207,27 @@
     .our_aim{
         height: 100vh;
         p{
-    
+            font-size: 1rem;
             margin: 5%;
         }
     }
+    }
+    @media (max-width:400px){
+        .founder{
+            .founder_content{
+                .right_container{
+                    font-size:1.1rem;
+                }
+            }
+            .founder_text{
+                h1{
+                    font-size: 1.8rem;
+                    &::after,
+                    &::before{
+                        top: 2.2rem;
+                    }
+                }
+            }
+          
+        }
     }
