@@ -50,7 +50,7 @@ function Navbar() {
         <div className={styles.logo} onClick={redirectHome}>
             <img src="/logo.png" alt="logo" width={70} height={70}></img>
         </div>
-        <ul className={styles.navlinks} style={width<768?showlinks?show:notShow:nothing}>
+        <ul className={styles.navlinks} style={width<=768?showlinks?show:notShow:nothing}>
         <li className= {styles.navigationLinks}><NavLink to='/'>Home</NavLink></li>
         <li className= {styles.navigationLinks}><NavLink to='/classes'>Classes</NavLink> </li>
         <li className= {styles.navigationLinks}><NavLink to='/about'>About Us</NavLink></li>

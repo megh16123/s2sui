@@ -361,6 +361,7 @@
 
 
 @media (max-width:768px) {
+    
     .home {
         .hero_section {
             // height: 115vh !important;
@@ -411,9 +412,12 @@
         .fifth {
             margin: 1.5%;
             padding: 0;
+            .card_container{
 
-            .card {
-                margin-right: -1% !important;
+                .card {
+                    margin-right: -1% !important;
+                    width: 250px;
+                }
             }
         }
 
@@ -422,10 +426,12 @@
             padding: 0;
 
             .mentors_component {
+                width: 75%;
                 .mentor {
+                    margin: 4% 10%;
                     .img {
-                        height: 150px;
-                        width: 150px;
+                        height: 200px;
+                        width: 200px;
                     }
                 }
             }
@@ -461,10 +467,22 @@
     }
 }
 
-@media (max-width:320px){
+@media (max-width:350px){
     #stats {
         margin-top: 25% !important;
     }
+    .home{
+    .fifth {
+     
+        .card_container{
+
+            .card {
+                
+                width: 200px;
+            }
+        }
+    }
+}
 }
 
 // }

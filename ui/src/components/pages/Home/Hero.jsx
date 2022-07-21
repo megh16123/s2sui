@@ -156,7 +156,7 @@ function Hero() {
         <div style={buttonSlider}>
           <div className={styles.pagination_button_container}>
             <button
-              onClick={() => scroll(-150)}>
+              onClick={() => scroll(-250)}>
 
               <svg
                 width='10'
@@ -211,7 +211,7 @@ function Hero() {
           </div>
           <div className={styles.pagination_button_container}>
             <button
-              onClick={() => scroll(150)}>
+              onClick={() => scroll(250)}>
               <svg
                 width='10'
                 height='18'
