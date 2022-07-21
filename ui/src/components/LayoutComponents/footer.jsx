@@ -2,9 +2,20 @@ import React, { useState } from 'react'
 import Modal from '../pages/misc/Modal'
 import ContactFrom from '../pages/misc/ContactFrom';
 import styles from './footer.module.scss'
+import { useLocation } from "react-router-dom"
+
 
 function Footer() {
     const [showModal, setShowModal] = useState(false);
+    const location = useLocation();
+
+    let width=0;
+    const getWidth = () =>{
+        width = window.innerWidth();
+        if(width<=768){
+            return width;
+        }
+    }
 
     const displayModal = () => {
         setShowModal(true);
@@ -14,9 +25,13 @@ function Footer() {
         setShowModal(false);
     }
 
+    const style={
+        marginTop:"calc(45% + 36vw)",
+    }
+
     return (
         <>
-            <section className={styles.seventh}>
+            <section className={styles.seventh} style={(location.pathname==="/classes" && getWidth)?style:''}>
             {/* <hr /> */}
                 <div id="footer" className={styles.upper_div}>
                     <div className={styles.left}>

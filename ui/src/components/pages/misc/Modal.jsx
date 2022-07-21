@@ -3,7 +3,6 @@ import styles from './Modal.module.scss'
 
 const Modal = ({ children, title, buttonText, showModal, displayModal, closeModal, cssClass}) => {
     if(cssClass==='contactForm'){
-        console.log("contact")
         return (
             <>
                 <div className={`${showModal === true ? styles.contactFormModal : styles.modalNotActive}`}>
