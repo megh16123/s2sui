@@ -21,6 +21,7 @@ const Modal = ({ children, title, buttonText, showModal, displayModal, closeModa
     }
     return (
         <>
+
             <div className={`${showModal === true ? styles.modal : styles.modalNotActive}`}>
                 <div className={styles.modalHeader}>
                     <h2 className={styles.modalTitle}>{title}</h2>

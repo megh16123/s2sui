@@ -36,9 +36,9 @@ function Hero() {
             <button className={styles.button_default}>
               Enroll Now
             </button>
-            <button className={styles.button_second}>
+            {/* <button className={styles.button_second}>
               Learn More
-            </button>
+            </button> */}
           </div>
         </div>
         <div className={styles.hero_img}>
@@ -54,9 +54,9 @@ function Hero() {
           <h1 className={styles.section2heading}>Our Platform is Crafted Specificaly for students</h1>
           <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis ea nostrum soluta reiciendis illo dolorum inventore nesciunt enim omnis vitae, dolorem labore facilis voluptates deleniti velit. Accusamus inventore, repellat minima maxime culpa iure delectus ea tempore, dolor qui tempora architecto?</p>
           <div className={styles.buttons}>
-            <button className={styles.button_default}>
+            {/* <button className={styles.button_default}>
               Get Started
-            </button>
+            </button> */}
           </div>
         </div>
         <div className={styles.hero_img}>
