@@ -24,7 +24,9 @@ function MoreInfo({ data,email, page }) {
 
   const handleClose3 = () => setShow3(false);
   const handleShow3 = () => setShow3(true);
-
+  const totalfee = data.fee.reduce((x,y)=>{
+    return x+y;
+  },0);
   useEffect(() => {
     const fetchData = async () => {
       if (page === "student") {
@@ -45,7 +47,7 @@ function MoreInfo({ data,email, page }) {
     };
 
     fetchData();
-  }, [data,page]);
+  }, [data,email,page]);
 const renderDat = ()=>{
   if(page==='student'){
     return (
@@ -54,10 +56,10 @@ const renderDat = ()=>{
      <br />
       Email: {student.email}
       <br />
-      Classes: {student.classenrolled.join(' ,')}
+      Classes: {student.classenrolled}
       <br />
-      TotalFee: {}   <br />  
-      Fee Due : { - student.feepaid}
+      TotalFee: {totalfee}   <br />  
+      Fee Due : {totalfee - student.feepaid}
      </>
     )
   }else{
@@ -156,7 +158,7 @@ const renderDat = ()=>{
               <Form.Control
                 type="number"
                 required
-                value={page==="student" && `${0}`}
+                value={page==="student" && `${totalfee}`}
                 // value={page==="teacher" && `${salary}`}
                 onChange={(e) => {
                   setfee(e.target.value)
