@@ -12,7 +12,7 @@ function MoreInfo({ data,email, page }) {
   const [fees, setfee] = useState(0);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
+  
   // For Modal 2
   const [show2, setShow2] = useState(false);
 
@@ -83,7 +83,7 @@ const renderDat = ()=>{
 
   const markfee = async () => {
     try {
-      const result = await axios.post('http://localhost:3001/student/updatefee', { email: email, amount: fees });
+      const result = await axios.post('http://localhost:3001/student/updatefee', { email: student.email, amount: fees });
       if (result.status === 200) {
         let st = student;
         st.feepaid = result.data.fees;
@@ -158,7 +158,7 @@ const renderDat = ()=>{
               <Form.Control
                 type="number"
                 required
-                value={page==="student" && `${totalfee}`}
+                value={page==="student" && `${fees}`}
                 // value={page==="teacher" && `${salary}`}
                 onChange={(e) => {
                   setfee(e.target.value)
