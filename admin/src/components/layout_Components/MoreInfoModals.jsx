@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Modal from "react-bootstrap/Modal";
 import axios from "axios";
 
-function MoreInfo({ email, classes, amount, page }) {
+function MoreInfo({ data,email, page }) {
   // For Modal 1
   const [show, setShow] = useState(false);
   const [student, setStudent] = useState({});
@@ -12,7 +12,7 @@ function MoreInfo({ email, classes, amount, page }) {
   const [fees, setfee] = useState(0);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
+  
   // For Modal 2
   const [show2, setShow2] = useState(false);
 
@@ -24,13 +24,14 @@ function MoreInfo({ email, classes, amount, page }) {
 
   const handleClose3 = () => setShow3(false);
   const handleShow3 = () => setShow3(true);
-
+  const totalfee = data.fee.reduce((x,y)=>{
+    return x+y;
+  },0);
   useEffect(() => {
     const fetchData = async () => {
       if (page === "student") {
         try {
-          const result = await axios.post('http://localhost:3001/student/getbymail', { email: email });
-          setStudent(result.data);
+          setStudent(data);
         } catch (error) {
           setStudent({});
         }
@@ -46,7 +47,7 @@ function MoreInfo({ email, classes, amount, page }) {
     };
 
     fetchData();
-  }, [email,page]);
+  }, [data,email,page]);
 const renderDat = ()=>{
   if(page==='student'){
     return (
@@ -55,11 +56,10 @@ const renderDat = ()=>{
      <br />
       Email: {student.email}
       <br />
-      Classes:{classes.join(', ')}
+      Classes: {student.classenrolled}
       <br />
-      TotalFee: {amount}
-      <br />  
-      Fee Due : {amount - student.feepaid}
+      TotalFee: {totalfee}   <br />  
+      Fee Due : {totalfee - student.feepaid}
      </>
     )
   }else{
@@ -83,7 +83,7 @@ const renderDat = ()=>{
 
   const markfee = async () => {
     try {
-      const result = await axios.post('http://localhost:3001/student/updatefee', { email: email, amount: fees });
+      const result = await axios.post('http://localhost:3001/student/updatefee', { email: student.email, amount: fees });
       if (result.status === 200) {
         let st = student;
         st.feepaid = result.data.fees;
@@ -158,7 +158,7 @@ const renderDat = ()=>{
               <Form.Control
                 type="number"
                 required
-                value={page==="student" && `${amount}`}
+                value={page==="student" && `${fees}`}
                 // value={page==="teacher" && `${salary}`}
                 onChange={(e) => {
                   setfee(e.target.value)
