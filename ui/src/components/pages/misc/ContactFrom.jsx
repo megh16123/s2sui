@@ -17,7 +17,7 @@ const ContactFrom = () => {
                 </div>
                 <div className='inputContainers'>
                     <label htmlFor="messageInput">Message</label>
-                    <textarea row={5} id="messageInput" type="text" name="name" placeholder='Message' />
+                    <textarea id="messageInput" type="text" name="name" placeholder='Message' />
                 </div>
             </div>
                 <button type='submit' className='submitButton'>Submit!!!</button>

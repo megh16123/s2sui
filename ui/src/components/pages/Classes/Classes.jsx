@@ -37,7 +37,7 @@ const Classes = () => {
                 <div onClick={displayModal} className="card card-2">Class 12th</div>
                 <div onClick={displayModal} className="card card-3">Class 11th</div>
                 <div onClick={displayModal} className="card card-4">Class 10th</div>
-                <div onClick={displayModal} className="card card-5">Class 2 - 9th</div>
+                <div onClick={displayModal} className="card card-5">Class 2nd - 9th</div>
             </div>
             <Footer />
         </>
