@@ -1,5 +1,5 @@
 :root {
-    --margin_stair: calc(6.5% + 8vh);
+    --margin_stair: 8.5%;
 }
 
 * {
@@ -35,7 +35,6 @@
 
 .heroContent p {
     margin-top: 5%;
-    padding-right: 10%;
 }
 
 #hero::before {
@@ -102,11 +101,11 @@
 
 .card {
     position: relative;
-    width: calc(10% + 10vw);
-    height: calc(1% + 6vw);
+    width: 20%;
+    height: 20%;
     background-color: #FFA115;
     color: #FFf;
-    font-size: calc(30% + 1rem);
+    font-size: 1.5rem;
     border-radius: 10px;
     display: grid;
     place-items: center;
@@ -177,7 +176,7 @@
 
 @media (max-width:500px){
     #cards{
-        top: 120% !important;
+        top: 120% !important;;
     }
 }
 
