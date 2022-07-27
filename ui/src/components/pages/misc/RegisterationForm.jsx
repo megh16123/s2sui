@@ -20,7 +20,7 @@ const RegisterationForm = () => {
                     </div>
                     <div className='inputContainers'>
                         <label htmlFor="addressInput">Address</label>
-                        <textarea id="addressInput" type="text" name="name" placeholder='Name' />
+                        <textarea row={5} id="addressInput" type="text" name="address" placeholder='Address' />
                     </div>
                 </div>
                 <p>Choose classes : </p>

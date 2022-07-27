@@ -71,7 +71,7 @@ if(props.page==='student'){
   return (
     <>
       <Button variant="dark" onClick={handleShow} className="mt-3">
-      <i class="fas fa-user-plus"></i> {`Add ${props.page}`}
+      <i className="fas fa-user-plus"></i> {`Add ${props.page}`}
       </Button>
 
       <Modal show={show} onHide={handleClose} backdrop="static">
@@ -192,7 +192,7 @@ if(props.page==='student'){
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="dark" type="submit" onClick={onSubmit} style={{cursor:"pointer"}}>
+          <Button variant="dark" type="submit" onClick={onSubmit}>
             {`Add ${props.page}`}
           </Button>
         </Modal.Footer>

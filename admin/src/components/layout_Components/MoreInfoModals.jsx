@@ -24,9 +24,12 @@ function MoreInfo({ data,email, page }) {
 
   const handleClose3 = () => setShow3(false);
   const handleShow3 = () => setShow3(true);
-  const totalfee = data.fee.reduce((x,y)=>{
+  let totalfee = 0;
+  if(page==="student"){
+  totalfee = data.fee.reduce((x,y)=>{
     return x+y;
   },0);
+}
   useEffect(() => {
     const fetchData = async () => {
       if (page === "student") {
@@ -38,8 +41,8 @@ function MoreInfo({ data,email, page }) {
       }
      else if(page==="teacher"){
           try {
-              const result = await axios.post('http://localhost:3001/teacher/getteacherbyemail',{email:email});
-              setTeacher(result.data);
+            
+              setTeacher(data);
           } catch (error) {
               setTeacher({});
           }
@@ -69,7 +72,7 @@ const renderDat = ()=>{
     <br />
     Email : {teacher.email}
     <br />
-    Qualification : {teacher.qualification}
+    Qualification : {teacher.qualification}join
     <br />
     Salary : {teacher.salary}
     <br/>

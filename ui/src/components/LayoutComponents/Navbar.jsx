@@ -4,7 +4,7 @@ import styles from './Navbar.module.scss'
 import { HashLink } from 'react-router-hash-link';
 import { useNavigate } from 'react-router-dom';
 
-// import Image from 'next/image'
+
 function Navbar() {
   const [showlinks,setShowLinks]=useState(false);
   const [width, setWidth] = React.useState(0);
@@ -44,7 +44,7 @@ function Navbar() {
   const nothing={
     display:"flex"
   }
-  
+ 
   return (
     <navbar className={styles.navbar} >
         <div className={styles.logo} onClick={redirectHome}>

@@ -3,19 +3,19 @@ import Modal from '../pages/misc/Modal'
 import ContactFrom from '../pages/misc/ContactFrom';
 import styles from './footer.module.scss'
 import { useLocation } from "react-router-dom"
+import { useMediaQuery } from '../Misc/MediaQuery';
 
 
 function Footer() {
     const [showModal, setShowModal] = useState(false);
     const location = useLocation();
+    const isTablet = useMediaQuery('(min-width:727px) and (max-width: 768px)');
+    const isMobile = useMediaQuery('(min-width:426px) and (max-width: 727px)');
+    const isMobileSmaller = useMediaQuery('(max-width: 426px)');
 
-    let width=0;
-    const getWidth = () =>{
-        width = window.innerWidth();
-        if(width<=768){
-            return width;
-        }
-    }
+    const classesStyleTablet = location.pathname === "/classes" && isTablet;
+    const classesStyleMobile = location.pathname === "/classes" && isMobile;
+    const classesStyleMobileSmaller = location.pathname === "/classes" && isMobileSmaller;
 
     const displayModal = () => {
         setShowModal(true);
@@ -25,14 +25,20 @@ function Footer() {
         setShowModal(false);
     }
 
-    const style={
-        marginTop:"calc(45% + 36vw)",
+    const style = {
+        marginTop: "calc(45% + 10vw)",
+    }
+    const styleMobile = {
+        marginTop: "calc(45% + 35vw)",
+    }
+    const styleMobileSmaller = {
+        marginTop: "calc(45% + 5vw)",
     }
 
     return (
         <>
-            <section className={styles.seventh} style={(location.pathname==="/classes" && getWidth)?style:''}>
-            {/* <hr /> */}
+            <section className={styles.seventh} style={classesStyleTablet ? style : classesStyleMobile ? styleMobile : classesStyleMobileSmaller ? styleMobileSmaller : console.log("false")}>
+                {/* <hr /> */}
                 <div id="footer" className={styles.upper_div}>
                     <div className={styles.left}>
                         Are You Ready To Start Your Course Now

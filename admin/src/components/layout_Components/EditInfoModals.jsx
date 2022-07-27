@@ -13,6 +13,7 @@ const EditInfoModals = (props) => {
             {/* Modal 1 */}
             <Button variant="dark" onClick={handleShow}>
                 Edit info
+                {console.log(props.data)}
             </Button>
 
             <Modal
@@ -24,7 +25,7 @@ const EditInfoModals = (props) => {
                 <Modal.Header closeButton>
                     <Modal.Title>
                         {props.page === "student" && `Edit <STUDENT NAME>`}
-                        {props.page === "teacher" && `Edit <STUDENT NAME>`}
+                        {props.page === "teacher" && `Edit <TEACHER NAME>`}
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
@@ -120,7 +121,7 @@ const EditInfoModals = (props) => {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="dark" type="submit">
-                        {`Add ${props.page}`}
+                        Save changes
                     </Button>
                 </Modal.Footer>
             </Modal>
