@@ -2,7 +2,6 @@
     --margin_stair: 8.5%;
 }
 
-
 .modalBackground {
     border: 2px solid black;
     position: fixed;
@@ -13,19 +12,18 @@
     background-color: rgba(128, 128, 128, 0.77);
 }
 
-
 .modal, .contactFormModal {
-    width: 60%;
+    width: 50%;
     height: max-content;
     border-radius: 10px;
     position: fixed;
-    transform: translate(20%, -50%);
+    transform: translate(30%, -45%);
+    margin-left: 5%;
     z-index: 10;
-    padding:5%;
 
     .modalTitle {
         color: white;
-        font-size: calc(1rem + 20%);
+        font-size: 1.8rem;
         font-weight: 500;
     }
 
@@ -39,7 +37,6 @@
         width: 2.5%;
         padding: .5%;
         cursor: pointer;
-        margin-right: 2%;
     }
 
     .modalHeader {
@@ -93,38 +90,63 @@
     from {
         transform: scale(1);
     }
-    
+
     to {
         transform: scale(1.2);
     }
 }
 
+#cards {
+    height: 80vh;
+    width: 86vw;
+    position: absolute;
+    bottom: -107%;
+    margin-left: 7%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-bottom: 0%;
+}
+
+.card {
+    position: relative;
+    width: 20%;
+    height: 20%;
+    background-color: #FFA115;
+    color: #FFf;
+    font-size: 1.5rem;
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.1s ease-in;
+}
+
+.card:hover {
+    transform: scale(1.1);
+}
+
+.card-2 {
+    margin-top: calc(var(--margin_stair)*1);
+}
+
+.card-3 {
+    margin-top: calc(var(--margin_stair)*2);
+}
+
+.card-4 {
+    margin-top: calc(var(--margin_stair)*3);
+}
+
+.card-5 {
+    margin-top: calc(var(--margin_stair)*4);
+}
 
 //Contact Form Modal
 .contactFormModal{
-    top:calc(5% + 10vh);
+    top:25%;
     left:20%;
     transform: translate(0,0);
 }
 
-@media (max-width:768px){
-    .modal{
-        width:80%;
-        top:calc(40% + 10vh);
-        left:-7%;
-    }
-    .contactFormModal{
-        width:100%;
-        left:0%;
-    }
-}
-@media (max-width:425px){
-    .closeButton{
-        margin-right:calc(2% + 5vw)!important;
-    }
-    .modal{
-        width:90%;
-        top:calc(40% + 10vh);
-        left:-12%;
-    }
-}

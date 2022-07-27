@@ -142,7 +142,7 @@
     }
 
     .heroContent {
-        .heroPara {
+        div {
             background-image: url('./class\ hero\ image-photoaidcom-greyscale.jpg');
             background-position: center;
             margin-left: -8%;
@@ -152,12 +152,12 @@
             font-size: larger;
             margin-top: 10%;
             margin-bottom: 7%;
-            p{
-                background-color: rgba(0, 0, 0, 0.71);
-                margin-left: -10.5%;
-                width: 121%;
-                padding: 10% 2%;
-            }
+        }
+        p{
+            background-color: rgba(0, 0, 0, 0.71);
+            margin-left: -10.5%;
+            width: 121%;
+            padding: 10% 2%;
         }
     }
     #cards{
