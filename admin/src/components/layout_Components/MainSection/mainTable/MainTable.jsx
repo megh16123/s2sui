@@ -53,7 +53,7 @@ function MainTable(props) {
 
                     <td>{index}</td>
                     <td>{item.name}</td>
-                    <td>{item.qualification}</td>
+                    <td>{item.subject}</td>
                     <td><RemoveModals email={item.email} page={props.page} />&nbsp;&nbsp;<MoreInfo data={item} amount={item.salary} page={props.page} />&nbsp;&nbsp;<EditInfoModals page={props.page} data={item}/></td>
                 </tr>
             )))
