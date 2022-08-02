@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './Modal.module.scss'
 
 const Modal = ({ children, title, buttonText, showModal, displayModal, closeModal, cssClass}) => {
-    if(cssClass==='contactForm'){
+    if(cssClass==='contactForm' || cssClass==='classes'){
         return (
             <>
                 <div className={`${showModal === true ? styles.contactFormModal : styles.modalNotActive}`}>
@@ -14,14 +14,13 @@ const Modal = ({ children, title, buttonText, showModal, displayModal, closeModa
                         {children}
                     </div>
                 </div>
-                <button onClick={displayModal} className={styles.openContactForm}>{buttonText}</button>
+                <button onClick={displayModal} className={cssClass==='contactForm'?styles.openContactForm:styles.openButtonClasses}>{buttonText}</button>
                 <div className={`${showModal === true ? styles.modalBackground : styles.modalNotActive}`}/>
             </>
         )
     }
     return (
         <>
-
             <div className={`${showModal === true ? styles.modal : styles.modalNotActive}`}>
                 <div className={styles.modalHeader}>
                     <h2 className={styles.modalTitle}>{title}</h2>

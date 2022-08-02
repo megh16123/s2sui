@@ -14,7 +14,7 @@
 }
 
 
-.modal, .contactFormModal {
+.modal, .contactFormModal, .classesModal {
     width: 60%;
     height: max-content;
     border-radius: 10px;
@@ -61,7 +61,7 @@
 }
 
 
-.openButton {
+.openButton, .openButtonClasses{
     padding: 1% 2%;
     margin-top: 5%;
     cursor: pointer;
@@ -74,6 +74,17 @@
     animation: buttonAnimation 1.5s infinite;
     animation-direction: alternate;
 }
+
+.openButtonClasses{
+    display: block;
+    margin-top: 10%;
+    // position: relative;
+    // top:-50%;
+    // // margin-bottom: 10%;
+    margin-left:auto;
+    margin-right:auto;
+}
+
 .openContactForm{
     border-radius: 7px;
     border: none;

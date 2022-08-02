@@ -3,6 +3,7 @@ import Footer from '../../LayoutComponents/footer'
 import Navbar from '../../LayoutComponents/Navbar'
 // import ContactFrom from '../misc/ContactFrom'
 import Modal from '../misc/Modal'
+import OtherClasses from '../misc/OtherClasses'
 import RegisterationForm from '../misc/RegisterationForm'
 import './Classes.scss'
 
@@ -11,7 +12,6 @@ const Classes = () => {
 
     const displayModal = () => {
         setShowModal(true);
-
     }
 
     const closeModal = () => {
@@ -39,6 +39,7 @@ const Classes = () => {
                 <div onClick={displayModal} className="card card-4">Class 10th</div>
                 <div onClick={displayModal} className="card card-5">Class 2 - 9th</div>
             </div>
+            <OtherClasses/>
             <Footer />
         </>
     )
