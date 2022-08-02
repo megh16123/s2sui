@@ -1,7 +1,6 @@
 import React from 'react'
 import './ContactFrom.scss'
 import { useState,useCallback } from 'react'
-// import axios from 'axios'
 import axios from 'axios'
 
 const ContactFrom = ({closeModal}) => {

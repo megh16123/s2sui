@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
-
+import axios from 'axios';
 const FormGroup = ({inputValue,formLabel,inputName,inputPlaceholder,inputType,as,row,page}) => {
     const [input, setInput] = useState(inputValue)
 
@@ -41,6 +41,28 @@ const EditInfoModals = ({ data, page }) => {
             }, 0)
         };
     }
+    const handleSubmit = async(e) =>  {
+e.preventDefault();
+        if (page === "student") {
+            
+            let data = {}
+             for(let i = 0;i<e.target.length;i++){
+                 data[e.target[i].name] = e.target[i].value
+            }
+         const result = await axios.post('http://localhost:3001/student/update', data)
+         console.log(result)
+        }
+        if (page === "teacher") {
+            let data = {}
+            for(let i = 0;i<e.target.length;i++){
+                data[e.target[i].name] = e.target[i].value
+            }
+            const result = await axios.post('http://localhost:3001/teacher/updateteacher', data)
+            console.log(result)
+            
+
+        }
+    }
     if (page === "teacher") {
         teacherFormData = {
             name: data.name,
@@ -72,13 +94,13 @@ const EditInfoModals = ({ data, page }) => {
                         {page === "teacher" && `Edit ${teacherFormData.name}`}
                     </Modal.Title>
                 </Modal.Header>
+                    <Form onSubmit={handleSubmit} method="post">
                 <Modal.Body>
-                    <Form action="" method="post">
-                    <FormGroup inputValue={page === "student" ? studentFormData.name : teacherFormData.name} inputName="Name" inputPlaceholder="Name" formLabel="Name" inputType="text" />
+                    <FormGroup inputValue={page === "student" ? studentFormData.name : teacherFormData.name} inputName="name" inputPlaceholder="Name" formLabel="Name" inputType="text" />
 
-                    <FormGroup inputValue={page === "student" ? studentFormData.email : teacherFormData.email} inputName="Email" inputPlaceholder="Email" formLabel="Email" inputType="email" />
+                    <FormGroup inputValue={page === "student" ? studentFormData.email : teacherFormData.email} inputName="email" inputPlaceholder="Email" formLabel="Email" inputType="email" />
 
-                    <FormGroup inputValue={page === "student" ? studentFormData.contact : teacherFormData.phone} inputName="phone" inputPlaceholder="Phone Number" formLabel="Phone Number" inputType="text" />
+                    <FormGroup inputValue={page === "student" ? studentFormData.contact : teacherFormData.phone} inputName={page==='student'?"contact":"phone"} inputPlaceholder="Phone Number" formLabel="Phone Number" inputType="text" />
 
                     <FormGroup inputValue={page === "student" ? studentFormData.address : teacherFormData.address} inputName="address" inputPlaceholder="Address" formLabel="Address" inputType="text" as="textarea"/>
                     
@@ -88,13 +110,13 @@ const EditInfoModals = ({ data, page }) => {
                        
                     <FormGroup inputValue="" inputName="qualification" inputPlaceholder='Educational Qualification' formLabel="Educational Qualification" inputType="text" as="textarea" row={3} page={page}/>
 
-                    </Form>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="dark" type="submit">
                         Save changes
                     </Button>
                 </Modal.Footer>
+                    </Form>
             </Modal>
         </>
     )
