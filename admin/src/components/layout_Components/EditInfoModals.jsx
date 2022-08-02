@@ -3,17 +3,61 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 
-const EditInfoModals = (props) => {
-    const [show, setShow] = useState(false);
+const FormGroup = ({inputValue,formLabel,inputName,inputPlaceholder,inputType,as,row,page}) => {
+    const [input, setInput] = useState(inputValue)
 
+    return (<Form.Group className={`mb-2 ${(inputName === "qualification" && page==="student") ? "d-none" : ""}`} controlId="exampleForm.ControlInput1">
+        <Form.Label>{formLabel}</Form.Label>
+        <Form.Control
+            name={inputName}
+            type={inputType}
+            value={input}
+            placeholder={inputPlaceholder}
+            as = {as}
+            row={row}
+            onChange={(e) => {
+                setInput(e.target.value);
+            }}
+        />
+    </Form.Group>)
+}
+
+const EditInfoModals = ({ data, page }) => {
+    const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    let studentFormData = {}
+    let teacherFormData = {}
+
+    if (page === "student") {
+        studentFormData = {
+            name: data.name,
+            email: data.email,
+            contact: data.contact,
+            address: data.address,
+            classes: data.classenrolled.join(","),
+            fee: data.fee.reduce((x, y) => {
+                return x + y;
+            }, 0)
+        };
+    }
+    if (page === "teacher") {
+        teacherFormData = {
+            name: data.name,
+            email: data.email,
+            phone: data.phone,
+            address: data.address,
+            subject: data.subject,
+            salary: data.salary,
+            qualification: ""
+        }
+    }
+
     return (
         <>
             {/* Modal 1 */}
             <Button variant="dark" onClick={handleShow}>
                 Edit info
-                {console.log(props.data)}
             </Button>
 
             <Modal
@@ -24,99 +68,26 @@ const EditInfoModals = (props) => {
             >
                 <Modal.Header closeButton>
                     <Modal.Title>
-                        {props.page === "student" && `Edit <STUDENT NAME>`}
-                        {props.page === "teacher" && `Edit <TEACHER NAME>`}
+                        {page === "student" && `Edit ${studentFormData.name}`}
+                        {page === "teacher" && `Edit ${teacherFormData.name}`}
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form action="" method="post">
-                        <Form.Group className="mb-2" controlId="exampleForm.ControlInput1">
-                            <Form.Label>Name</Form.Label>
-                            <Form.Control
-                                name="name"
-                                type="name"
-                                placeholder="Name"
-                                autoFocus
-                            // onChange={onInputChange}
+                    <FormGroup inputValue={page === "student" ? studentFormData.name : teacherFormData.name} inputName="Name" inputPlaceholder="Name" formLabel="Name" inputType="text" />
 
-                            />
-                        </Form.Group>
-                        <Form.Group className="mb-2" controlId="exampleForm.ControlInput1">
-                            <Form.Label>Email address</Form.Label>
-                            <Form.Control
-                                name="email"
-                                type="email"
-                                placeholder="sample@gmail.com"
-                            // onChange={onInputChange}
+                    <FormGroup inputValue={page === "student" ? studentFormData.email : teacherFormData.email} inputName="Email" inputPlaceholder="Email" formLabel="Email" inputType="email" />
 
+                    <FormGroup inputValue={page === "student" ? studentFormData.contact : teacherFormData.phone} inputName="phone" inputPlaceholder="Phone Number" formLabel="Phone Number" inputType="text" />
 
-                            />
-                        </Form.Group>
-                        <Form.Group
-                            className="mb-2"
-                        >
-                            <Form.Label>Phone Number</Form.Label>
-                            <Form.Control
-                                name="phone"
-                                type="string"
-                                placeholder="Phone Number"
-                            // onChange={onInputChange}
+                    <FormGroup inputValue={page === "student" ? studentFormData.address : teacherFormData.address} inputName="address" inputPlaceholder="Address" formLabel="Address" inputType="text" as="textarea"/>
+                    
+                    <FormGroup inputValue={page === "student" ? studentFormData.classenrolled : teacherFormData.subject} inputName={`${page === "student" ? "classes" : "subject"}`} inputPlaceholder={`${page === "student" ? "Classes (Comma Seperated Values)" : "Subject"}`} formLabel={`${page === "student" ? "Classes" : "Subject"}`} inputType="text" />
 
+                    <FormGroup inputValue={page === "student" ? studentFormData.fee : teacherFormData.salary} inputName={`${page === "student" ? "Fee" : "salary"}`} inputPlaceholder={`${page === "student" ? "Fee" : "salary"}`} formLabel={`${page === "student" ? "Fee" : "salary"}`} inputType="text"/>
+                       
+                    <FormGroup inputValue="" inputName="qualification" inputPlaceholder='Educational Qualification' formLabel="Educational Qualification" inputType="text" as="textarea" row={3} page={page}/>
 
-                            />
-                        </Form.Group>
-                        <Form.Group
-                            className="mb-2"            >
-                            <Form.Label>Address</Form.Label>
-                            <Form.Control
-                                name="address"
-                                type="string"
-                                as="textarea"
-                                row={3}
-                                placeholder='Address'
-                            // onChange={onInputChange}
-
-
-                            />
-                        </Form.Group>
-                        <Form.Group
-                            className="mb-2"            >
-                            <Form.Label>{`${props.page === "student" ? "Classes" : "Subject"}`}</Form.Label>
-                            <Form.Control
-                                name={`${props.page === "student" ? "classes" : "subject"}`}
-                                type="string"
-                                placeholder={`${props.page === "student" ? "Classes (Comma Seperated Values)" : "Subject"}`}
-                            // onChange={onInputChange}
-
-
-                            />
-                        </Form.Group>
-                        <Form.Group
-                            className="mb-2">
-                            <Form.Label>{`${props.page === "student" ? "Fee" : "salary"}`}</Form.Label>
-                            <Form.Control
-                                name={`${props.page === "student" ? "Fee" : "salary"}`}
-                                type="string"
-                                placeholder={`${props.page === "student" ? "Fee" : "salary"}`}
-                            // onChange={onInputChange}
-
-
-                            />
-                        </Form.Group>
-                        <Form.Group
-                            className={`mb-2 ${props.page === "student" ? "d-none" : " "}`}            >
-                            <Form.Label>Qualification</Form.Label>
-                            <Form.Control
-                                name="qualification"
-                                type="string"
-                                as="textarea"
-                                row={3}
-                                placeholder='Educational Qualification'
-                            // onChange={onInputChange}
-
-
-                            />
-                        </Form.Group>
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>

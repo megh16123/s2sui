@@ -40,6 +40,7 @@ const AddRecord = (props) => {
     (ev)=>{
       const name = ev.target.name;
       const value = ev.target.value;
+      console.log(name,value);
       
       if(props.page==="student"){
         setStudentFormData({...studentFormData, [name]:value})
@@ -111,10 +112,10 @@ if(props.page==='student'){
                 type="string"
                 placeholder="Phone Number"
                 onChange={onInputChange}
-                
-                
                />
             </Form.Group>
+            {props.page==="student" &&
+            <>
             <Form.Group className="mb-2" controlId="exampleForm.ControlInput1">
               <Form.Label>Father's Name</Form.Label>
               <Form.Control
@@ -122,8 +123,6 @@ if(props.page==='student'){
                 type="string"
                 placeholder=""
                 onChange={onInputChange}
-                
-                
               />
             </Form.Group>
             <Form.Group className="mb-2" controlId="exampleForm.ControlInput1">
@@ -133,10 +132,10 @@ if(props.page==='student'){
                 type="string"
                 placeholder=""
                 onChange={onInputChange}
-                
-                
               />
             </Form.Group>
+            </>
+            }
             <Form.Group
               className="mb-2"            >
               <Form.Label>Address</Form.Label>
