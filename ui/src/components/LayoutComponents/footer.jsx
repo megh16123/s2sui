@@ -44,7 +44,7 @@ function Footer() {
                         Are You Ready To Start Your Course Now
                     </div>
                     <div className={styles.right}>
-                        <Modal title='Contact Us' buttonText='Contact Us' showModal={showModal} displayModal={displayModal} closeModal={closeModal} cssClass="contactForm">{<ContactFrom closeModal={closeModal} />}</Modal>
+                        <Modal title='Contact Us' buttonText='Contact Us' showModal={showModal} displayModal={displayModal} closeModal={closeModal} cssClass="contactForm">{<ContactFrom />}</Modal>
                     </div>
                 </div>
 
