@@ -1,5 +1,7 @@
 :root {
     --margin_stair: calc(6.5% + 8vh);
+    // --margin_stair: calc(6.5% + 14vh);
+
 }
 
 * {
@@ -98,11 +100,15 @@
     flex-direction: row;
     justify-content: space-around;
     padding-bottom: 0%;
+    a{
+        text-decoration: none;
+    }
 }
 
 .card {
     position: relative;
     width: calc(10% + 10vw);
+    // width: calc(10% + 14vw);
     height: calc(1% + 6vw);
     background-color: #FFA115;
     color: #FFf;
@@ -135,8 +141,190 @@
     margin-top: calc(var(--margin_stair)*4);
 }
 
+.description{
+    margin: 5% 10%;
 
+    h1{
+        text-align: center;
+        margin: 3% auto;
+        font-size: 3rem;
+        font-weight: 600;
+    }
+    p{
+        font-size: 1.2rem;
+        font-weight: 400;
+    }
+
+    .syllabus{
+        margin: 5% auto;
+        text-align: center;
+        font-size: 2rem;
+        font-weight: 700;
+    }
+    .subjectName{
+        margin: 3% auto;
+        font-size: 1.6rem;
+        font-weight: 600;
+        padding-left: 15%;
+    }
+    ul{
+        list-style: none;
+        padding-left: 10%;
+        margin: 3% auto;
+        font-size: 1.2rem;
+        font-weight: 400;
+        li{
+            margin-bottom: 1%;
+        }
+    }
+    
+}
+
+.wrapper{
+    font-family: 'Comfortaa', sans-serif;
+    display: flex;
+}
+
+#about{
+    color: white;
+    background: black;
+}
+
+.title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 100vh;
+    background: rgb(250, 249, 252);
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+}
+
+.scroll{
+    width:50%;
+    color: white;
+}
+
+.scroll div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.scroll div > h2 {
+    width: 80%;
+    text-align: center;
+}
+
+.scroll div > p {
+    width: 80%;
+}
+
+.scroll div:nth-child(1){
+    background: #D83F87;
+}
+
+.scroll div:nth-child(2){
+    background: #4ABDAC;
+}
+
+.scroll div:nth-child(3){
+    background: #44318D;
+}
+
+
+.phone-scroll{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 5%;
+    text-align: center;
+}
+
+.mentorSlider{
+    padding:4% 6%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.mentors{
+    // display: flex;
+    // // flex-direction: column;
+    // // justify-content: center;
+    // // align-items: center;
+    // width: 100%;
+    // width: 90%;
+}
+.mentors_component {
+    display: flex;
+    width: 95%;
+    justify-content: space-around;
+    .mentor {
+        // margin: 4% 10%;
+        .img {
+            height: 150px;
+            width: 150px;
+        }
+    }
+}
+.pagination_button_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    button{
+        width: 40px;
+    padding-top: 25%;
+    height: 40px;
+    background-color: #F6F6F5;
+    border-radius: 25%;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    }
+}
+.mentor-heading{
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 5%;
+}
+.mentors_component {
+        display: flex;
+        width: 95%;
+        scroll-behavior: smooth;
+        overflow-x: scroll;
+        -ms-overflow-style: none;
+        /* Internet Explorer 10+ */
+        scrollbar-width: none;
+    
+        /* Firefox */
+        // white-space: nowrap;
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
+    .register{
+        background-color: #FFA115;
+        display: flex;
+        justify-content: center;
+    }
+    .card1{
+        margin:5% auto;
+        padding: 0.5%;
+    }
 @media (max-width:768px) {
+    .description{
+        margin: 5%;
+    }
+    .mentorSlider{
+        margin-bottom: 50%;
+    }
     #hero {
         background: none;
     }
@@ -165,6 +353,9 @@
         // flex-direction: column;
         margin-bottom:-25%;
         flex-wrap: wrap;
+        a{
+            text-decoration: none;
+        }
         .card{
             flex:1 1 250px;
             margin-top: 0;
@@ -176,6 +367,16 @@
 }
 
 @media (max-width:500px){
+    .description{
+        p{
+            margin-bottom: 10%;
+            font-size: 1rem;
+
+        }
+        h1{
+            font-size: 2rem;
+        }
+    }
     #cards{
         top: 120% !important;
     }

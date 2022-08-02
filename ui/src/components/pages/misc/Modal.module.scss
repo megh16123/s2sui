@@ -100,6 +100,33 @@
         transform: scale(1.1);
     }
 }
+.classesOpen{
+    margin:4% auto;
+    border-radius: 7px;
+    border: none;
+    text-align: center;
+    background-color: #FFA115;
+    display: block;
+    font-size: 1.1rem;
+    padding: 0.3rem 1rem;
+    cursor: pointer;
+    color: #ffffff;
+    width: 150px;
+    height: 35px;
+    transition: all 0.2s ease-in-out;
+    transition: transform 0.1s ease-in-out;
+    animation: buttonAnimation 1.5s infinite;
+    animation-direction: alternate;
+    &:hover{
+        transform: scale(1.1);
+    }
+}
+
+.contactFormModal{
+    top: calc(5% + -3vh);
+    left: 20%;
+    transform: translate(0, 0);
+}
 @keyframes buttonAnimation {
     from {
         transform: scale(1);

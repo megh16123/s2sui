@@ -3,7 +3,12 @@ import styles from './Hero.module.scss'
 import Navbar from '../../LayoutComponents/Navbar'
 import Footer from '../../LayoutComponents/footer'
 import { useRef,useState } from "react";
+<<<<<<< HEAD
+import MentorCard from './mentorCard';
+import "../Home/MentorCard.scss"
+=======
 
+>>>>>>> 6e391de90811d3e1cf52eae3af681353aa03b8ec
 function Hero() {
   const courseSliderRef = useRef();
   const courseSliderRef2 = useRef();
@@ -184,38 +189,10 @@ const closeModal = () => {
             </button>
           </div>
           <div className={styles.mentors_component} ref={courseSliderRef}>
-            <div className={styles.mentor}>
-              <div className={styles.img}>
-              </div>
-              <h3>Lorem ipsum</h3>
-              <h4>UI/UX</h4>
-            </div>
-            <div className={styles.mentor}>
-              <div className={styles.img}>
-              </div>
-              <h3>Lorem ipsum</h3>
-              <h4>UI/UX</h4>
-            </div>
-            <div className={styles.mentor}>
-              <div className={styles.img}>
-              </div>
-              <h3>Lorem ipsum</h3>
-              <h4>UI/UX</h4>
-            </div>
-
-            <div className={styles.mentor}>
-              <div className={styles.img}>
-              </div>
-              <h3>Lorem ipsum</h3>
-              <h4>UI/UX</h4>
-            </div>
-
-            <div className={styles.mentor}>
-              <div className={styles.img}>
-              </div>
-              <h3>Lorem ipsum</h3>
-              <h4>UI/UX</h4>
-            </div>
+            
+            <MentorCard/>
+            <MentorCard/>
+            <MentorCard/>
           </div>
           <div className={styles.pagination_button_container}>
             <button

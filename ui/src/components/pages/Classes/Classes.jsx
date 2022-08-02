@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import Footer from '../../LayoutComponents/footer'
 import Navbar from '../../LayoutComponents/Navbar'
-// import ContactFrom from '../misc/ContactFrom'
 import Modal from '../misc/Modal'
 import OtherClasses from '../misc/OtherClasses'
 import RegisterationForm from '../misc/RegisterationForm'
 import './Classes.scss'
+import { Link } from "react-router-dom";
 
 const Classes = () => {
     const [showModal, setShowModal] = useState(false);
@@ -33,11 +33,11 @@ const Classes = () => {
             </div>
 
             <div id="cards">
-                <div onClick={displayModal} className="card card-1">NEET/JEE</div>
-                <div onClick={displayModal} className="card card-2">Class 12th</div>
-                <div onClick={displayModal} className="card card-3">Class 11th</div>
-                <div onClick={displayModal} className="card card-4">Class 10th</div>
-                <div onClick={displayModal} className="card card-5">Class 2 - 9th</div>
+                <Link to="./cd" className="card card-1">NEET/JEE</Link>
+                <Link to="./cd" className="card card-2">Class 12th</Link>
+                <Link to="./cd" className="card card-3">Class 11th</Link>
+                <Link to="./cd" className="card card-4">Class 10th</Link>
+                <Link to="./cd" className="card card-5">Class 2 - 9th</Link>
             </div>
             <OtherClasses/>
             <Footer />
