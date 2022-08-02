@@ -4,12 +4,13 @@ import Form from 'react-bootstrap/Form';
 import Modal from "react-bootstrap/Modal";
 import axios from "axios";
 
-function MoreInfo({ email, classes, amount, page }) {
+function MoreInfo({ data, email, page }) {
   // For Modal 1
   const [show, setShow] = useState(false);
   const [student, setStudent] = useState({});
   const [teacher, setTeacher] = useState({});
   const [fees, setfee] = useState(0);
+  const [salary, setSalary] = useState(0);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -24,66 +25,70 @@ function MoreInfo({ email, classes, amount, page }) {
 
   const handleClose3 = () => setShow3(false);
   const handleShow3 = () => setShow3(true);
-
+  let totalfee = 0;
+  if (page === "student") {
+    totalfee = data.fee.reduce((x, y) => {
+      return x + y;
+    }, 0);
+  }
   useEffect(() => {
     const fetchData = async () => {
       if (page === "student") {
         try {
-          const result = await axios.post('http://localhost:3001/student/getbymail', { email: email });
-          setStudent(result.data);
+          setStudent(data);
         } catch (error) {
           setStudent({});
         }
       }
-     else if(page==="teacher"){
-          try {
-              const result = await axios.post('http://localhost:3001/teacher/getteacherbyemail',{email:email});
-              setTeacher(result.data);
-          } catch (error) {
-              setTeacher({});
-          }
+      else if (page === "teacher") {
+        try {
+
+          setTeacher(data);
+          setSalary(data.salary);
+        } catch (error) {
+          setTeacher({});
+        }
       }
     };
 
     fetchData();
-  }, [email,page]);
-const renderDat = ()=>{
-  if(page==='student'){
-    return (
-     <>
-     Name: {student.name}
-     <br />
-      Email: {student.email}
-      <br />
-      Classes:{classes.join(', ')}
-      <br />
-      TotalFee: {amount}
-      <br />  
-      Fee Due : {amount - student.feepaid}
-     </>
-    )
-  }else{
-  return(
-    <>
-    Name: {teacher.name}
-    <br />
-    Email : {teacher.email}
-    <br />
-    Qualification : {teacher.qualification}
-    <br />
-    Salary : {teacher.salary}
-    <br/>
-    Address : {teacher.address}
-    <br />
-    Subject: {teacher.subject}
-    </>
-  )
+  }, [data, email, page]);
+  const renderDat = () => {
+    if (page === 'student') {
+      return (
+        <>
+          Name: {student.name}
+          <br />
+          Email: {student.email}
+          <br />
+          Classes: {student.classenrolled}
+          <br />
+          TotalFee: {totalfee}   <br />
+          Fee Due : {totalfee - student.feepaid}
+        </>
+      )
+    } else {
+      return (
+        <>
+          Name: {teacher.name}
+          <br />
+          Email : {teacher.email}
+          <br />
+          Qualification : {teacher.qualification}
+          <br />
+          Salary : {teacher.salary}
+          <br />
+          Address : {teacher.address}
+          <br />
+          Subject: {teacher.subject}
+        </>
+      )
+    }
   }
-}
 
   const markfee = async () => {
     try {
-      const result = await axios.post('http://localhost:3001/student/updatefee', { email: email, amount: fees });
+      const result = await axios.post('http://localhost:3001/student/updatefee', { email: student.email, amount: fees });
       if (result.status === 200) {
         let st = student;
         st.feepaid = result.data.fees;
@@ -115,9 +120,9 @@ const renderDat = ()=>{
           <Modal.Title>{teacher.name}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-    {renderDat()}
-       
-         </Modal.Body>
+          {renderDat()}
+
+        </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
@@ -129,8 +134,8 @@ const renderDat = ()=>{
               handleClose();
             }}
           >
-            {page==="student" && `Mark Fee Submission`}
-            {page==="teacher" && `Mark Salary`}
+            {page === "student" && `Mark Fee Submission`}
+            {page === "teacher" && `Mark Salary`}
           </Button>
         </Modal.Footer>
       </Modal>
@@ -144,8 +149,8 @@ const renderDat = ()=>{
         keyboard={false}
       >
         <Modal.Header closeButton>
-          <Modal.Title>{page==="student" && `Marking Fee Submission`}
-          {page==="teacher" && `Marking Salary`}
+          <Modal.Title>{page === "student" && `Marking Fee Submission`}
+            {page === "teacher" && `Marking Salary`}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -158,10 +163,14 @@ const renderDat = ()=>{
               <Form.Control
                 type="number"
                 required
-                value={page==="student" && `${amount}`}
-                // value={page==="teacher" && `${salary}`}
+                value={page === "student" ? `${fees}` : `${salary}`}
+                // value={page==="student" && `${fees}`}
+                // value={page==="teacher" && `${teacher.salary}`}
                 onChange={(e) => {
-                  setfee(e.target.value)
+                  if (page === "student") {
+                    setfee(e.target.value);
+                  }
+                  else setSalary(e.target.value);
                 }}
               />
             </Form.Group>
@@ -176,8 +185,8 @@ const renderDat = ()=>{
               // } else markSalary();
             }}
           >
-            {page==="student" && `Mark Fee Submission`}
-            {page==="teacher" && `Mark salary`}
+            {page === "student" && `Mark Fee Submission`}
+            {page === "teacher" && `Mark salary`}
           </Button>
         </Modal.Footer>
       </Modal>
@@ -191,14 +200,14 @@ const renderDat = ()=>{
         keyboard={false}
       >
         <Modal.Header>
-        <Modal.Title>
-            {page==="student" && `Fee Submission Marked`}
-            {page==="teacher" && `Salary marked`}
-        </Modal.Title>
+          <Modal.Title>
+            {page === "student" && `Fee Submission Marked`}
+            {page === "teacher" && `Salary marked`}
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        {page==="student" && `Fee submission has been marked for &lt;${student.name}&gt;`}
-        {page==="teacher" && `Fee submission has been marked for &lt;${teacher.name}&gt;`}
+          {page === "student" && `Fee submission has been marked for ${student.name}`}
+          {page === "teacher" && `Salary submission has been marked for {teacher.name}`}
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose3}>

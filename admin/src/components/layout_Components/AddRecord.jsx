@@ -9,7 +9,11 @@ const AddRecord = (props) => {
   const [studentFormData, setStudentFormData] = useState({
     name: "",
     email:"",
-    phone:"",
+    class: "",
+    fathername: "",
+    age: "",
+    fcontact: "",
+    contact:"",
     address:"",
     classes:"",
     fee:""
@@ -36,6 +40,7 @@ const AddRecord = (props) => {
     (ev)=>{
       const name = ev.target.name;
       const value = ev.target.value;
+      console.log(name,value);
       
       if(props.page==="student"){
         setStudentFormData({...studentFormData, [name]:value})
@@ -48,7 +53,14 @@ const AddRecord = (props) => {
 const onSubmit = async()=>{
 if(props.page==='student'){
   const result = await axios.post('http://localhost:3001/student/register',studentFormData)
-  console.log(result)
+  if(result.status===200){
+    const courses = studentFormData.classes.split(",");
+    courses.forEach(async(course)=>{
+    const res = await axios.post('http://localhost:3001/classes/join',{email:studentFormData.email,class:course})
+    })
+  }else{
+    // console.log(result)
+  }
   handleClose()
 
 }else{
@@ -59,9 +71,8 @@ if(props.page==='student'){
 }
   return (
     <>
-    {console.log("rendered")}
       <Button variant="dark" onClick={handleShow} className="mt-3">
-      <i class="fas fa-user-plus"></i> {`Add ${props.page}`}
+      <i className="fas fa-user-plus"></i> {`Add ${props.page}`}
       </Button>
 
       <Modal show={show} onHide={handleClose} backdrop="static">
@@ -97,14 +108,34 @@ if(props.page==='student'){
             >
               <Form.Label>Phone Number</Form.Label>
               <Form.Control
-                name="phone"
+                name="contact"
                 type="string"
                 placeholder="Phone Number"
                 onChange={onInputChange}
-                
-                
                />
             </Form.Group>
+            {props.page==="student" &&
+            <>
+            <Form.Group className="mb-2" controlId="exampleForm.ControlInput1">
+              <Form.Label>Father's Name</Form.Label>
+              <Form.Control
+                name="fathername"
+                type="string"
+                placeholder=""
+                onChange={onInputChange}
+              />
+            </Form.Group>
+            <Form.Group className="mb-2" controlId="exampleForm.ControlInput1">
+              <Form.Label>Father's Contact</Form.Label>
+              <Form.Control
+                name="fcontact"
+                type="string"
+                placeholder=""
+                onChange={onInputChange}
+              />
+            </Form.Group>
+            </>
+            }
             <Form.Group
               className="mb-2"            >
               <Form.Label>Address</Form.Label>
@@ -135,7 +166,7 @@ if(props.page==='student'){
               className="mb-2">
               <Form.Label>{`${props.page==="student"?"Fee":"salary"}`}</Form.Label>
               <Form.Control
-                name={`${props.page==="student"?"Fee":"salary"}`}
+                name={`${props.page==="student"?"fee":"salary"}`}
                 type="string"
                 placeholder={`${props.page==="student"?"Fee":"salary"}`}
                 onChange={onInputChange}
