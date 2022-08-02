@@ -2,8 +2,9 @@ import React from 'react'
 import styles from './Hero.module.scss'
 import Navbar from '../../LayoutComponents/Navbar'
 import Footer from '../../LayoutComponents/footer'
-import { useRef } from "react";
-
+import { useRef,useState } from "react";
+import MentorCard from './mentorCard';
+import "../Home/MentorCard.scss"
 function Hero() {
   const courseSliderRef = useRef();
   const courseSliderRef2 = useRef();
@@ -22,6 +23,14 @@ function Hero() {
     flexDirection: "row",
     justifyContent: "center"
   }
+  const [showModal, setShowModal] = useState(false);
+  const displayModal = () => {
+    setShowModal(true);
+}
+
+const closeModal = () => {
+    setShowModal(false);
+}
 
   return (
 
@@ -33,7 +42,7 @@ function Hero() {
           <h2>For A Better Future</h2>
           <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis ea nostrum soluta reiciendis illo dolorum inventore nesciunt enim omnis vitae, dolorem labore facilis voluptates deleniti velit. Accusamus inventore, repellat minima maxime culpa iure delectus ea tempore, dolor qui tempora architecto?</p>
           <div className={styles.buttons}>
-            <button className={styles.button_default}>
+            <button className={styles.button_default} showModal={showModal} displayModal={displayModal} closeModal={closeModal} cssClass="contactForm">
               Enroll Now
             </button>
             {/* <button className={styles.button_second}>
@@ -176,38 +185,10 @@ function Hero() {
             </button>
           </div>
           <div className={styles.mentors_component} ref={courseSliderRef}>
-            <div className={styles.mentor}>
-              <div className={styles.img}>
-              </div>
-              <h3>Lorem ipsum</h3>
-              <h4>UI/UX</h4>
-            </div>
-            <div className={styles.mentor}>
-              <div className={styles.img}>
-              </div>
-              <h3>Lorem ipsum</h3>
-              <h4>UI/UX</h4>
-            </div>
-            <div className={styles.mentor}>
-              <div className={styles.img}>
-              </div>
-              <h3>Lorem ipsum</h3>
-              <h4>UI/UX</h4>
-            </div>
-
-            <div className={styles.mentor}>
-              <div className={styles.img}>
-              </div>
-              <h3>Lorem ipsum</h3>
-              <h4>UI/UX</h4>
-            </div>
-
-            <div className={styles.mentor}>
-              <div className={styles.img}>
-              </div>
-              <h3>Lorem ipsum</h3>
-              <h4>UI/UX</h4>
-            </div>
+            
+            <MentorCard/>
+            <MentorCard/>
+            <MentorCard/>
           </div>
           <div className={styles.pagination_button_container}>
             <button
