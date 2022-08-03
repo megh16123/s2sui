@@ -235,7 +235,26 @@
 
 .scroll div:nth-child(3){
     background: #44318D;
-}.mentors{
+}
+
+
+.phone-scroll{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 5%;
+    text-align: center;
+}
+
+.mentorSlider{
+    padding:4% 6%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.mentors{
     // display: flex;
     // // flex-direction: column;
     // // justify-content: center;

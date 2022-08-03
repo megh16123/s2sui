@@ -5,14 +5,11 @@ import Footer from '../../LayoutComponents/footer'
 import { useRef,useState } from "react";
 import MentorCard from './mentorCard';
 import "../Home/MentorCard.scss"
-<<<<<<< HEAD
-=======
 import AOS from 'aos';
+import 'aos/dist/aos.css';
 import Modal from '../misc/Modal'
 import RegisterationForm from '../misc/RegisterationForm'
-import 'aos/dist/aos.css';
 AOS.init();
->>>>>>> 71df6b655f2ee3d92fc16002b0c3395f8ce42347
 
 function Hero() {
   const courseSliderRef = useRef();
@@ -68,7 +65,7 @@ const closeModal = () => {
 
       <div className={styles.just_for_margin}>
       </div>
-      <section data-aos="fade-up" data-aos-delay="250" data-aos-duration="1250" className={styles.hero_section} id={styles.section2} style={{ flexDirection: 'row-reverse', height: '110vh' }}>
+      <section data-aos="fade-up" className={styles.hero_section} id={styles.section2} style={{ flexDirection: 'row-reverse', height: '110vh' }}>
         <div className={styles.hero_content}>
           <h1 className={styles.section2heading}>Our Platform is Crafted Specificaly for students</h1>
           <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis ea nostrum soluta reiciendis illo dolorum inventore nesciunt enim omnis vitae, dolorem labore facilis voluptates deleniti velit. Accusamus inventore, repellat minima maxime culpa iure delectus ea tempore, dolor qui tempora architecto?</p>
@@ -82,7 +79,7 @@ const closeModal = () => {
           <img src="/main-2.png" alt="about-girl"></img>
         </div>
       </section>
-      <section data-aos="fade-up" data-aos-delay="250" data-aos-duration="1250" className={styles.four}>
+      <section data-aos="fade-up" className={styles.four}>
         <div className={styles.stats} id={styles.stats}>
           <div className={styles.card_icon}></div>
           <h2>10,000+</h2>
@@ -100,7 +97,7 @@ const closeModal = () => {
         </div>
       </section>
 
-      <section className={styles.fifth} data-aos="zoom-in" data-aos-delay="250" data-aos-duration="1250">
+      <section className={styles.fifth} data-aos="zoom-in">
         <h2>Our Platform is Crafted Specificaly for students</h2>
         <div style={buttonSlider}>
           <div className={styles.pagination_button_container}>
@@ -169,7 +166,7 @@ const closeModal = () => {
         </div>
       </section>
 
-      <section className={styles.sixth}  data-aos="zoom-out" data-aos-delay="250" data-aos-duration="1250">
+      <section className={styles.sixth}  data-aos="zoom-out" data-aos-delay="200">
         <h2>Our Professional Mentors</h2>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing <br /> elit. Enim vitae nemo nihil ullam doloremque ex!</p>
         <div style={buttonSlider}>

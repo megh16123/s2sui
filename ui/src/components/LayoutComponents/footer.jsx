@@ -50,7 +50,7 @@ function Footer() {
                     </div>
                 </div>
 
-                <footer className={styles.footer} data-aos="fade-up">
+                <footer className={styles.footer} >
                     <div className={styles.products}>
                         <h2>Products</h2>
                         <ul>
