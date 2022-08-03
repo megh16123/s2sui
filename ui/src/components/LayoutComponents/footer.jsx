@@ -4,7 +4,9 @@ import ContactFrom from '../pages/misc/ContactFrom';
 import styles from './footer.module.scss'
 import { useLocation } from "react-router-dom"
 import { useMediaQuery } from '../Misc/MediaQuery';
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+AOS.init();
 
 function Footer() {
     const [showModal, setShowModal] = useState(false);
@@ -37,7 +39,7 @@ function Footer() {
 
     return (
         <>
-            <section className={styles.seventh} style={classesStyleTablet ? style : classesStyleMobile ? styleMobile : classesStyleMobileSmaller ? styleMobileSmaller : console.log("false")}>
+            <section data-aos="fade-up" data-aos-delay="50" className={styles.seventh} style={classesStyleTablet ? style : classesStyleMobile ? styleMobile : classesStyleMobileSmaller ? styleMobileSmaller : console.log("false")}>
                 {/* <hr /> */}
                 <div id="footer" className={styles.upper_div}>
                     <div className={styles.left}>

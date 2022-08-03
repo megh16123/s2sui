@@ -3,12 +3,12 @@ import styles from './Hero.module.scss'
 import Navbar from '../../LayoutComponents/Navbar'
 import Footer from '../../LayoutComponents/footer'
 import { useRef,useState } from "react";
-<<<<<<< HEAD
 import MentorCard from './mentorCard';
 import "../Home/MentorCard.scss"
-=======
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+AOS.init();
 
->>>>>>> 6e391de90811d3e1cf52eae3af681353aa03b8ec
 function Hero() {
   const courseSliderRef = useRef();
   const courseSliderRef2 = useRef();
@@ -41,7 +41,7 @@ const closeModal = () => {
     <div className={styles.home}>
       <Navbar />
       <section className={styles.hero_section}>
-        <div className={styles.hero_content}>
+        <div className={styles.hero_content} data-aos="fade-left" data-aos-delay="250">
           <h1>Study 2 Success</h1>
           <h2>For A Better Future</h2>
           <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis ea nostrum soluta reiciendis illo dolorum inventore nesciunt enim omnis vitae, dolorem labore facilis voluptates deleniti velit. Accusamus inventore, repellat minima maxime culpa iure delectus ea tempore, dolor qui tempora architecto?</p>
@@ -54,7 +54,7 @@ const closeModal = () => {
             </button> */}
           </div>
         </div>
-        <div className={styles.hero_img}>
+        <div className={styles.hero_img} data-aos="fade-right" data-aos-delay="250">
           <img src="/main.png" alt="about-girl"></img>
         </div>
       </section>
@@ -62,7 +62,7 @@ const closeModal = () => {
 
       <div className={styles.just_for_margin}>
       </div>
-      <section className={styles.hero_section} id={styles.section2} style={{ flexDirection: 'row-reverse', height: '110vh' }}>
+      <section data-aos="fade-up" className={styles.hero_section} id={styles.section2} style={{ flexDirection: 'row-reverse', height: '110vh' }}>
         <div className={styles.hero_content}>
           <h1 className={styles.section2heading}>Our Platform is Crafted Specificaly for students</h1>
           <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis ea nostrum soluta reiciendis illo dolorum inventore nesciunt enim omnis vitae, dolorem labore facilis voluptates deleniti velit. Accusamus inventore, repellat minima maxime culpa iure delectus ea tempore, dolor qui tempora architecto?</p>
@@ -76,7 +76,7 @@ const closeModal = () => {
           <img src="/main-2.png" alt="about-girl"></img>
         </div>
       </section>
-      <section className={styles.four}>
+      <section data-aos="fade-up" className={styles.four}>
         <div className={styles.stats} id={styles.stats}>
           <div className={styles.card_icon}></div>
           <h2>10,000+</h2>
@@ -94,7 +94,7 @@ const closeModal = () => {
         </div>
       </section>
 
-      <section className={styles.fifth}>
+      <section className={styles.fifth} data-aos="zoom-in">
         <h2>Our Platform is Crafted Specificaly for students</h2>
         <div style={buttonSlider}>
           <div className={styles.pagination_button_container}>
@@ -163,7 +163,7 @@ const closeModal = () => {
         </div>
       </section>
 
-      <section className={styles.sixth}>
+      <section className={styles.sixth}  data-aos="zoom-out" data-aos-delay="200">
         <h2>Our Professional Mentors</h2>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing <br /> elit. Enim vitae nemo nihil ullam doloremque ex!</p>
         <div style={buttonSlider}>

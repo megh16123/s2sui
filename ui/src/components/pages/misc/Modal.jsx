@@ -14,7 +14,7 @@ const Modal = ({ children, title, buttonText, showModal, displayModal, closeModa
                         {children}
                     </div>
                 </div>
-                <button onClick={displayModal} className={cssClass==='contactForm'?styles.openContactForm:styles.openButtonClasses}>{buttonText}</button>
+                <button onClick={displayModal} className={cssClass==='contactForm'?styles.openContactForm:styles.openOtherClassButton}>{buttonText}</button>
                 <div className={`${showModal === true ? styles.modalBackground : styles.modalNotActive}`}/>
             </>
         )
