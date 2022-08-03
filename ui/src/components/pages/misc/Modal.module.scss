@@ -6,6 +6,7 @@
 .modalBackground {
     border: 2px solid black;
     position: fixed;
+    z-index: 5;
     width: 100vw;
     height: 150vh;
     top: 0%;
@@ -13,13 +14,34 @@
     background-color: rgba(128, 128, 128, 0.77);
 }
 
+.EnrollButton{
+        background-color: #ffa115;
+        color: azure;
+        width: 150px;
+        border-radius: 10px;
+        height: 55px;
+        border: 2px solid #e0c075;
+        cursor: pointer;
+        font-size: 1.2rem;
+        font-weight: 500;
+        box-shadow: 13px 13px 20px #b8b8b8;
+
+
+        &:hover {
+            background-color: rgb(250, 250, 250);
+            color: #ffa115;
+            box-shadow: 7px 7px 10px #b8b8b8;
+
+
+        }
+}
 
 .modal, .contactFormModal, .classesModal {
     width: 60%;
     height: max-content;
     border-radius: 10px;
     position: fixed;
-    transform: translate(20%, -50%);
+    transform: translate(20%, -60%);
     z-index: 10;
     padding:5%;
 
@@ -78,6 +100,7 @@
 .openOtherClassButton{
     display: block;
     margin: 5% auto;
+    
 }
 .openButtonClasses{
     display: block;
@@ -144,7 +167,7 @@
 
 //Contact Form Modal
 .contactFormModal{
-    top:calc(5% + 10vh);
+    top: calc(5% + 4vh);
     left:20%;
     transform: translate(0,0);
 }
@@ -171,6 +194,8 @@
 
     .openOtherClassButton{
         margin-top: 30%;
+        width: 150px;
+    height: 35px;
     }
 }
 
@@ -181,10 +206,18 @@
         margin-bottom: -5%;
     }
 }
+@media (max-width:625px){
+
+    .openOtherClassButton{
+        margin-top: 46%;
+        margin-bottom: -25%;
+    }
+}
+
 @media (max-width:500px){
     .openOtherClassButton{
         margin-top: 20%;
-        
+        margin-bottom: -15%;
     }
 }
 @media (max-width:425px){
@@ -195,5 +228,10 @@
         width:90%;
         top:calc(40% + 10vh);
         left:-12%;
+    }
+}
+@media (max-width:405px){
+    .openOtherClassButton{
+        margin-bottom: 0;
     }
 }

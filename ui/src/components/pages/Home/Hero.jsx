@@ -6,6 +6,8 @@ import { useRef,useState } from "react";
 import MentorCard from './mentorCard';
 import "../Home/MentorCard.scss"
 import AOS from 'aos';
+import Modal from '../misc/Modal'
+import RegisterationForm from '../misc/RegisterationForm'
 import 'aos/dist/aos.css';
 AOS.init();
 
@@ -41,20 +43,21 @@ const closeModal = () => {
     <div className={styles.home}>
       <Navbar />
       <section className={styles.hero_section}>
-        <div className={styles.hero_content} data-aos="fade-left" data-aos-delay="250">
-          <h1>Study 2 Success</h1>
-          <h2>For A Better Future</h2>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis ea nostrum soluta reiciendis illo dolorum inventore nesciunt enim omnis vitae, dolorem labore facilis voluptates deleniti velit. Accusamus inventore, repellat minima maxime culpa iure delectus ea tempore, dolor qui tempora architecto?</p>
+        <div className={styles.hero_content} >
+          <h1 data-aos="fade-left" data-aos-delay="250" data-aos-duration="1250">Study 2 Success</h1>
+          <h2 data-aos="fade-left" data-aos-delay="250" data-aos-duration="1250">For A Better Future</h2>
+          <p data-aos="fade-left" data-aos-delay="250" data-aos-duration="1250">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis ea nostrum soluta reiciendis illo dolorum inventore nesciunt enim omnis vitae, dolorem labore facilis voluptates deleniti velit. Accusamus inventore, repellat minima maxime culpa iure delectus ea tempore, dolor qui tempora architecto?</p>
           <div className={styles.buttons}>
-            <button className={styles.button_default} showModal={showModal} displayModal={displayModal} closeModal={closeModal} cssClass="contactForm">
+            {/* <button className={styles.button_default} showModal={showModal} displayModal={displayModal} closeModal={closeModal} cssClass="contactForm">
               Enroll Now
-            </button>
+            </button> */}
+             <Modal title='Get in touch' buttonText='Enroll Now' cssClass="Enroll" showModal={showModal} displayModal={displayModal} closeModal={closeModal}>{<RegisterationForm />}</Modal>
             {/* <button className={styles.button_second}>
               Learn More
             </button> */}
           </div>
         </div>
-        <div className={styles.hero_img} data-aos="fade-right" data-aos-delay="250">
+        <div className={styles.hero_img} data-aos="fade-right" data-aos-delay="250" data-aos-duration="1250">
           <img src="/main.png" alt="about-girl"></img>
         </div>
       </section>
@@ -62,7 +65,7 @@ const closeModal = () => {
 
       <div className={styles.just_for_margin}>
       </div>
-      <section data-aos="fade-up" className={styles.hero_section} id={styles.section2} style={{ flexDirection: 'row-reverse', height: '110vh' }}>
+      <section data-aos="fade-up" data-aos-delay="250" data-aos-duration="1250" className={styles.hero_section} id={styles.section2} style={{ flexDirection: 'row-reverse', height: '110vh' }}>
         <div className={styles.hero_content}>
           <h1 className={styles.section2heading}>Our Platform is Crafted Specificaly for students</h1>
           <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis ea nostrum soluta reiciendis illo dolorum inventore nesciunt enim omnis vitae, dolorem labore facilis voluptates deleniti velit. Accusamus inventore, repellat minima maxime culpa iure delectus ea tempore, dolor qui tempora architecto?</p>
@@ -76,7 +79,7 @@ const closeModal = () => {
           <img src="/main-2.png" alt="about-girl"></img>
         </div>
       </section>
-      <section data-aos="fade-up" className={styles.four}>
+      <section data-aos="fade-up" data-aos-delay="250" data-aos-duration="1250" className={styles.four}>
         <div className={styles.stats} id={styles.stats}>
           <div className={styles.card_icon}></div>
           <h2>10,000+</h2>
@@ -94,7 +97,7 @@ const closeModal = () => {
         </div>
       </section>
 
-      <section className={styles.fifth} data-aos="zoom-in">
+      <section className={styles.fifth} data-aos="zoom-in" data-aos-delay="250" data-aos-duration="1250">
         <h2>Our Platform is Crafted Specificaly for students</h2>
         <div style={buttonSlider}>
           <div className={styles.pagination_button_container}>
@@ -163,7 +166,7 @@ const closeModal = () => {
         </div>
       </section>
 
-      <section className={styles.sixth}  data-aos="zoom-out" data-aos-delay="200">
+      <section className={styles.sixth}  data-aos="zoom-out" data-aos-delay="250" data-aos-duration="1250">
         <h2>Our Professional Mentors</h2>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing <br /> elit. Enim vitae nemo nihil ullam doloremque ex!</p>
         <div style={buttonSlider}>
