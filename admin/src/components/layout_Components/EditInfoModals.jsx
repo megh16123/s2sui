@@ -49,7 +49,7 @@ e.preventDefault();
              for(let i = 0;i<e.target.length;i++){
                  data[e.target[i].name] = e.target[i].value
             }
-         const result = await axios.post('http://localhost:3001/student/update', data)
+         const result = await axios.post('https://s2sapi.herokuapp.com/student/update', data)
          console.log(result)
         }
         if (page === "teacher") {
@@ -57,7 +57,7 @@ e.preventDefault();
             for(let i = 0;i<e.target.length;i++){
                 data[e.target[i].name] = e.target[i].value
             }
-            const result = await axios.post('http://localhost:3001/teacher/updateteacher', data)
+            const result = await axios.post('https://s2sapi.herokuapp.com/teacher/updateteacher', data)
             console.log(result)
             
 

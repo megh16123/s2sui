@@ -18,7 +18,7 @@ const ContactFrom = ({closeModal}) => {
         }
       ,[contact])
       const onSubmit = async()=>{
-     const result = await axios.post('http://localhost:3001/contactus',contact)
+     const result = await axios.post('https://s2sapi.herokuapp.com/contactus',contact)
         if(result.status===200){
             closeModal();
         }

@@ -14,9 +14,9 @@ function Overview(props) {
       setStudentCount(0);
       setTeacherCount(0);
       try {
-        const result = await axios("http://localhost:3001/student/allcount");
+        const result = await axios("https://s2sapi.herokuapp.com/student/allcount");
         const result1 = await axios(
-            "http://localhost:3001/teacher/allcount"
+            "https://s2sapi.herokuapp.com/teacher/allcount"
         );
         setTeacherCount(result1.data.count);
         setStudentCount(result.data.count);
