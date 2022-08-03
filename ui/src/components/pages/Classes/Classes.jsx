@@ -27,7 +27,7 @@ const Classes = () => {
         <div className="heroContainer" >
             <div id="hero" />
             <div className="heroContent">
-                <h1>Classes</h1>
+                <h1 data-aos="fade-right" data-aos-delay="250" data-aos-duration="1250">Classes</h1>
                 <div className="heroPara"  data-aos="fade-right" data-aos-delay="250" data-aos-duration="1250">
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, quo quod error perferendis ratione possimus natus eveniet nobis ullam eum voluptate deleniti ad animi minus!</p>
                 </div>

@@ -40,7 +40,6 @@ function Footer() {
     return (
         <>
             <section  className={styles.seventh} style={classesStyleTablet ? style : classesStyleMobile ? styleMobile : classesStyleMobileSmaller ? styleMobileSmaller : console.log("false")}>
-                {/* <hr /> */}
                 <div id="footer" className={styles.upper_div}>
                     <div className={styles.left}>
                         Are You Ready To Start Your Course Now
@@ -50,7 +49,7 @@ function Footer() {
                     </div>
                 </div>
 
-                <footer className={styles.footer} >
+                <footer className={styles.footer} data-aos="fade-up">
                     <div className={styles.products}>
                         <h2>Products</h2>
                         <ul>
