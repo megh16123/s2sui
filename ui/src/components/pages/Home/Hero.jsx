@@ -5,11 +5,14 @@ import Footer from '../../LayoutComponents/footer'
 import { useRef,useState } from "react";
 import MentorCard from './mentorCard';
 import "../Home/MentorCard.scss"
+<<<<<<< HEAD
+=======
 import AOS from 'aos';
 import Modal from '../misc/Modal'
 import RegisterationForm from '../misc/RegisterationForm'
 import 'aos/dist/aos.css';
 AOS.init();
+>>>>>>> 71df6b655f2ee3d92fc16002b0c3395f8ce42347
 
 function Hero() {
   const courseSliderRef = useRef();

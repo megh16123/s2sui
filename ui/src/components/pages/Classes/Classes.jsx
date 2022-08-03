@@ -31,7 +31,7 @@ const Classes = () => {
                     <div className="heroPara"  data-aos="fade-right" data-aos-delay="250" data-aos-duration="1250">
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, quo quod error perferendis ratione possimus natus eveniet nobis ullam eum voluptate deleniti ad animi minus!</p>
                     </div>
-                    <Modal title='Get in touch' buttonText='Register' showModal={showModal} displayModal={displayModal} closeModal={closeModal}>{<RegisterationForm />}</Modal>
+                    <Modal title='Get in touch' buttonText='Register' showModal={showModal} displayModal={displayModal} closeModal={closeModal}>{<RegisterationForm closeModal={closeModal} />}</Modal>
                 </div>
             </div>
 
