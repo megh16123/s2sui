@@ -16,7 +16,7 @@ function Student() {
       const fetchData = async () => {
         try {
           const result = await axios(
-            "http://localhost:3001/admin/getstudentdata"
+            "https://s2sapi.herokuapp.com/admin/getstudentdata"
           );
           setData(result.data);
         } catch (error) {

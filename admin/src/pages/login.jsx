@@ -17,7 +17,7 @@ function Login(){
 
     const handleSubmit=(e)=>{
         e.preventDefault();
-        axios.post("http://localhost:3001/admin/login",{
+        axios.post("https://s2sapi.herokuapp.com/admin/login",{
             username:username,
             password:password
         })

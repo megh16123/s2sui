@@ -52,11 +52,11 @@ const AddRecord = (props) => {
 
 const onSubmit = async()=>{
 if(props.page==='student'){
-  const result = await axios.post('http://localhost:3001/student/register',studentFormData)
+  const result = await axios.post('https://s2sapi.herokuapp.com/student/register',studentFormData)
   if(result.status===200){
     const courses = studentFormData.classes.split(",");
     courses.forEach(async(course)=>{
-    const res = await axios.post('http://localhost:3001/classes/join',{email:studentFormData.email,class:course})
+    const res = await axios.post('https://s2sapi.herokuapp.com/classes/join',{email:studentFormData.email,class:course})
     })
   }else{
     // console.log(result)
@@ -64,7 +64,7 @@ if(props.page==='student'){
   handleClose()
 
 }else{
-  const result = await axios.post('http://localhost:3001/teacher/addteacher',teacherFormData)
+  const result = await axios.post('https://s2sapi.herokuapp.com/teacher/addteacher',teacherFormData)
   console.log(result)
   handleClose()
 }

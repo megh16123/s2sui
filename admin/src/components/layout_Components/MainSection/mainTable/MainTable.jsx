@@ -12,12 +12,12 @@ function MainTable(props) {
     useEffect(() => {
         const fetchData = async () => {
             if (props.page === "teacher") {
-                const response = await fetch("http://localhost:3001/teacher/getteacher");
+                const response = await fetch("https://s2sapi.herokuapp.com/teacher/getteacher");
                 const dat = await response.json();
                 setData(dat);
             }
             if (props.page === "student") {
-                const response = await fetch("http://localhost:3001/student/studentdata");
+                const response = await fetch("https://s2sapi.herokuapp.com/student/studentdata");
                 const dat = await response.json();
                 const d = dat.map((item) => {
                     item.fee = item.classenrolled.map((it) => {
