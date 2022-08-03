@@ -61,7 +61,7 @@
 }
 
 
-.openButton, .openButtonClasses{
+.openButton, .openButtonClasses,.openOtherClassButton{
     padding: 1% 2%;
     margin-top: 5%;
     cursor: pointer;
@@ -75,6 +75,10 @@
     animation-direction: alternate;
 }
 
+.openOtherClassButton{
+    display: block;
+    margin: 5% auto;
+}
 .openButtonClasses{
     display: block;
     margin-top: 10%;
@@ -144,7 +148,16 @@
     left:20%;
     transform: translate(0,0);
 }
-
+@media (max-width:1150px){
+    .openOtherClassButton{
+        margin-bottom: 25%;
+    }
+}
+@media (max-width:1000px){
+    .openOtherClassButton{
+        margin-bottom: 30%;
+    }
+}
 @media (max-width:768px){
     .modal{
         width:80%;
@@ -154,6 +167,24 @@
     .contactFormModal{
         width:100%;
         left:0%;
+    }
+
+    .openOtherClassButton{
+        margin-top: 30%;
+    }
+}
+
+@media (max-width:725px){
+
+    .openOtherClassButton{
+        margin-top: 40%;
+        margin-bottom: -5%;
+    }
+}
+@media (max-width:500px){
+    .openOtherClassButton{
+        margin-top: 20%;
+        
     }
 }
 @media (max-width:425px){

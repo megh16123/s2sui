@@ -3,7 +3,9 @@ import { NavLink } from 'react-router-dom';
 import styles from './Navbar.module.scss'
 import { HashLink } from 'react-router-hash-link';
 import { useNavigate } from 'react-router-dom';
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+AOS.init();
 
 function Navbar() {
   const [showlinks,setShowLinks]=useState(false);
@@ -46,7 +48,7 @@ function Navbar() {
   }
  
   return (
-    <navbar className={styles.navbar} >
+    <navbar className={styles.navbar} data-aos="fade-down" data-aos-delay="250">
         <div className={styles.logo} onClick={redirectHome}>
             <img src="/logo.png" alt="logo" width={70} height={70}></img>
         </div>

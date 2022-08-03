@@ -3,7 +3,9 @@ import styles from './About.module.scss'
 // import Image from 'next/image'
 import Navbar from '../../LayoutComponents/Navbar'
 import Footer from '../../LayoutComponents/footer'
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+AOS.init();
 function About() {
   // const svg= <HTMLElement><svg className={styles.svg} viewBox="0 0 500 150" preserveAspectRatio="none" ><path className={styles.path} d="M251.92,-17.26 C209.59,70.55 285.77,81.41 251.92,151.48 L500.00,150.00 L500.00,0.00 Z" ></path></svg></HTMLElement>;
   const [width, setWidth] = React.useState(0);
@@ -22,18 +24,18 @@ function About() {
         <div className={styles.about}>
           <Navbar />
           <div className={styles.about_components_parent}>
-            <div className={styles.left_component}>
+            <div className={styles.left_component} data-aos="fade-left" data-aos-delay="250">
               <h1>About <br /> Us</h1>
               <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil deleniti esse accusantium. Natus enim maxime itaque unde tenetur, dolorem facere?</p>
 
             </div>
-            <div className={styles.right_component}>
+            <div className={styles.right_component} data-aos="fade-right" data-aos-delay="250">
               <img className={styles.lightbulb} src="/logo.png" alt="lightBulb"></img>
             </div>
           </div>
         </div>
       </div>
-      <div className={styles.founder}>
+      <div className={styles.founder} data-aos="zoom-in">
         <svg className={styles.svg} viewBox="0 0 500 150" preserveAspectRatio="none" ><path className={styles.path} d="M251.92,-17.26 C209.59,70.55 285.77,81.41 251.92,151.48 L500.00,150.00 L500.00,0.00 Z" ></path></svg>
         <div className={styles.founder_text}>
           <h1>Our Founder</h1>
@@ -48,7 +50,7 @@ function About() {
         </div>
       </div>
 
-      <div className={styles.our_aim}>
+      <div className={styles.our_aim} data-aos="fade-up">
         <div className={styles.heading}>
           <h2>Our Aim</h2>
         </div>
