@@ -37,7 +37,7 @@ function Navbar() {
             justifyContent: "space-around",
             alignItems: "center",
             zIndex: "100",
-            height: "100vh"
+            height: "99.9vh"
   }
 
   const notShow={
