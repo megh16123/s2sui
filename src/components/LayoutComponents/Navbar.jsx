@@ -37,7 +37,7 @@ function Navbar() {
             justifyContent: "space-around",
             alignItems: "center",
             zIndex: "100",
-            height: "105vh"
+            height: "100vh"
   }
 
   const notShow={
@@ -47,7 +47,12 @@ function Navbar() {
   const nothing={
     display:"flex"
   }
- 
+ const fixed={
+  position:"fixed"
+ }
+ const notfixed={
+  position:"relative"
+ }
   return (
     <navbar className={styles.navbar}>
         <div className={styles.logo} onClick={redirectHome}>
@@ -59,7 +64,7 @@ function Navbar() {
         <li className= {styles.navigationLinks}><NavLink to='/about'>About Us</NavLink></li>
         <li className= {styles.navigationLinks}><HashLink smooth to='#footer'>Contact Us</HashLink></li>
         </ul>
-        <div className={styles.burger} onClick={()=>setShowLinks(!showlinks)}>
+        <div className={styles.burger} onClick={()=>setShowLinks(!showlinks)} style={showlinks?fixed:notfixed}>
           <div className={styles.line} style={showlinks?whiteBurger:blackBurger}></div>
           <div className={styles.line} style={showlinks?whiteBurger:blackBurger}></div>
           <div className={styles.line} style={showlinks?whiteBurger:blackBurger}></div>
