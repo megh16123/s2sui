@@ -7,8 +7,10 @@ import MentorCard from './mentorCard';
 import "../Home/MentorCard.scss"
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import Modal from '../misc/Modal'
+// import '../../LayoutComponents/aos.css';
+import Modal from '../misc/Modal';
 import RegisterationForm from '../misc/RegisterationForm'
+import CountUp, { useCountUp } from "react-countup";
 AOS.init();
 
 function Hero() {
@@ -37,8 +39,22 @@ function Hero() {
 const closeModal = () => {
     setShowModal(false);
 }
-
+useCountUp({
+  ref: "counter",
+  end: 100,
+  enableScrollSpy: true,
+  scrollSpyDelay: 1000,
+  scrollSpyOnce: true
+});
+useCountUp({
+  ref: "counter2",
+  end: 50,
+  enableScrollSpy: true,
+  scrollSpyDelay: 1000,
+  scrollSpyOnce: true
+});
   return (
+    
 
     <div className={styles.home}>
       <Navbar />
@@ -46,7 +62,7 @@ const closeModal = () => {
         <div className={styles.hero_content} >
           <h1 data-aos="fade-left" data-aos-delay="250" data-aos-duration="1250">Study 2 Success</h1>
           <h2 data-aos="fade-left" data-aos-delay="250" data-aos-duration="1250">For A Better Future</h2>
-          <p data-aos="fade-left" data-aos-delay="250" data-aos-duration="1250">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis ea nostrum soluta reiciendis illo dolorum inventore nesciunt enim omnis vitae, dolorem labore facilis voluptates deleniti velit. Accusamus inventore, repellat minima maxime culpa iure delectus ea tempore, dolor qui tempora architecto?</p>
+          <p data-aos="fade-left" data-aos-delay="250" data-aos-duration="1250">Your future is important, our goal is to put together the perfect plan for your student. We offer you the knowledge and skills by experienced professionals.</p>
           <div className={styles.buttons}>
             {/* <button className={styles.button_default} showModal={showModal} displayModal={displayModal} closeModal={closeModal} cssClass="contactForm">
               Enroll Now
@@ -57,8 +73,8 @@ const closeModal = () => {
             </button> */}
           </div>
         </div>
-        <div className={styles.hero_img} data-aos="fade-right" data-aos-delay="250" data-aos-duration="1250">
-          <img src="/main.png" alt="about-girl"></img>
+        <div className={styles.hero_img}>
+          <img  data-aos="fade-right" data-aos-delay="250" data-aos-duration="1250" src="/main.png" alt="about-girl"></img>
         </div>
       </section>
 
@@ -68,7 +84,21 @@ const closeModal = () => {
       <section data-aos="fade-up" className={styles.hero_section} id={styles.section2} style={{ flexDirection: 'row-reverse', height: '110vh' }}>
         <div className={styles.hero_content}>
           <h1 className={styles.section2heading}>Our Platform is Crafted Specificaly for students</h1>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis ea nostrum soluta reiciendis illo dolorum inventore nesciunt enim omnis vitae, dolorem labore facilis voluptates deleniti velit. Accusamus inventore, repellat minima maxime culpa iure delectus ea tempore, dolor qui tempora architecto?</p>
+          <h3>Why Choose Us</h3>
+          <p className={styles.why_us}>
+            <ul>
+       <li>  <span className={styles.heading}> 1. Affordability:</span> We offer an excellent education in a very affordable price. </li>
+
+        <li> <span className={styles.heading}>2. Best Faculty : </span> Mastered degree teachers for your  best results. </li>
+        <li> <span className={styles.heading}> 3. </span>Very disciplined environment.  </li>
+
+<li><span className={styles.heading}>4. </span> Smart class facilities are provided. </li>
+
+<li><span className={styles.heading}>5.</span>  Well maintained classrooms, proper cleanliness, ventilated building along with facilities like A.C., lights, benches, chairs, whiteboard and fans. </li>
+
+<li><span className={styles.heading}>6. </span> Our building place with located in a very quiet and calm place with a soothing ambience to concentrate better. for the students.</li>
+</ul>
+          </p>
           <div className={styles.buttons}>
             {/* <button className={styles.button_default}>
               Get Started
@@ -82,19 +112,28 @@ const closeModal = () => {
       <section data-aos="fade-up" className={styles.four}>
         <div className={styles.stats} id={styles.stats}>
           <div className={styles.card_icon}></div>
-          <h2>10,000+</h2>
+          <h2 className='counter'>
+          {/* <CountUp end={100} enableScrollSpy /> */}
+          <span id="counter" />
+          <span>+</span>
+          </h2>
           <p>Students</p>
         </div>
         <div className={styles.stats}>
           <div className={styles.card_icon}></div>
-          <h2>1,000+</h2>
+          <h2 className='counter' >
+          {/* <CountUp end={50} enableScrollSpy />
+           */}
+            <span id="counter2" />
+          <span>+</span>
+          </h2>
           <p>Learning Courses</p>
         </div>
-        <div className={styles.stats}>
+        {/* <div className={styles.stats}>
           <div className={styles.card_icon}></div>
           <h2>9,000+</h2>
           <p>Materials</p>
-        </div>
+        </div> */}
       </section>
 
       <section className={styles.fifth} data-aos="zoom-in">
@@ -124,22 +163,22 @@ const closeModal = () => {
           <div className={styles.card_container} ref={courseSliderRef2}>
             <div className={styles.card}>
               <img src="https://www.livelaw.in/h-upload/2021/09/14/400572-4pune-jee-main-results-decla-1599551417.jpg" alt="" />
-              <h3>JEE Main course for beginner 1</h3>
+              <h3>CTET</h3>
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis officia deleniti sequi culpa exercitationem cumque, explicabo sed! Sapiente, debitis ea?</p>
             </div>
             <div className={styles.card}>
               <img src="https://www.livelaw.in/h-upload/2021/09/14/400572-4pune-jee-main-results-decla-1599551417.jpg" alt="" />
-              <h3>JEE Main course for beginner 2</h3>
+              <h3>UPTET</h3>
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis officia deleniti sequi culpa exercitationem cumque, explicabo sed! Sapiente, debitis ea?</p>
             </div>
             <div className={styles.card}>
               <img src="https://www.livelaw.in/h-upload/2021/09/14/400572-4pune-jee-main-results-decla-1599551417.jpg" alt="" />
-              <h3>JEE Main course for beginner 3</h3>
+              <h3>Basic Competitive Exams</h3>
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis officia deleniti sequi culpa exercitationem cumque, explicabo sed! Sapiente, debitis ea?</p>
             </div>
             <div className={styles.card}>
               <img src="https://www.livelaw.in/h-upload/2021/09/14/400572-4pune-jee-main-results-decla-1599551417.jpg" alt="" />
-              <h3>JEE Main course for beginner 4</h3>
+              <h3>B.Sc. Chemistry Biology</h3>
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis officia deleniti sequi culpa exercitationem cumque, explicabo sed! Sapiente, debitis ea?</p>
             </div>
           </div>
@@ -168,7 +207,7 @@ const closeModal = () => {
 
       <section className={styles.sixth}  data-aos="zoom-out" data-aos-delay="200">
         <h2>Our Professional Mentors</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing <br /> elit. Enim vitae nemo nihil ullam doloremque ex!</p>
+        {/* <p>Lorem ipsum dolor sit amet consectetur adipisicing <br /> elit. Enim vitae nemo nihil ullam doloremque ex!</p> */}
         <div style={buttonSlider}>
           <div className={styles.pagination_button_container}>
             <button
@@ -193,9 +232,13 @@ const closeModal = () => {
           </div>
           <div className={styles.mentors_component} ref={courseSliderRef}>
             
-            <MentorCard/>
-            <MentorCard/>
-            <MentorCard/>
+            <MentorCard name={'Yogesh Chopra' }  qualification={'M.Phil ,M.Com ,PGDIBO, B.Ed ,B.LLB'}/>
+            <MentorCard name={'Shivam Sharma' }  qualification={'M.Sc., B.Ed.'} />
+            <MentorCard name={'Ankush Kumar' }   qualification={'M.Sc., B.Ed. ,CTET'}/>
+            <MentorCard name={'Harsh' }/>
+            <MentorCard name={'Pragya Sharma ' } qualification={'M. Sc.'}/>
+            <MentorCard name={'Shashank Goyal' } qualification={'MCA, C, C++,Java ,Python'}/>
+            
           </div>
           <div className={styles.pagination_button_container}>
             <button
@@ -219,20 +262,7 @@ const closeModal = () => {
           </div>
         </div>
       </section>
-
-      {/* <section className={styles.seventh}>
-          <div className={styles.upper_div}>
-            <div className={styles.left}>
-              Are You Ready To Start Your Course Now
-            </div>
-            <div className={styles.right}>
-              <div className={styles.contact_now}>
-                Contact Us
-              </div>
-            </div>
-          </div> */}
       <Footer />
-      {/* </section> */}
     </div>
   )
 }

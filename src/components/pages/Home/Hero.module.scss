@@ -1,14 +1,31 @@
+// body{
+    // overflow-x: hidden;
+// }
 .home {
     .hero_section {
         height: 100vh;
         margin: 0% 10%;
         display: flex;
         justify-content: space-between;
-
+        h3{
+            margin: 5% 0%;
+            font-size: 2rem;
+        }
         .hero_content {
             width: 60%;
             margin-top: 10%;
 
+            .why_us{
+            font-size: 1.2rem;
+                li{
+                    margin-bottom: 3%;
+                    list-style: none;
+                }
+                .heading{
+                    // font-size: 1.5rem;
+                    font-weight: 650;
+                }
+            }
             h1 {
                 font-size: 2.5rem;
                 padding: 2% 0;
@@ -370,11 +387,14 @@
 
             .hero_content {
                 width: 100%;
+                .why_us{
+                    font-size: 0.9rem;
+                }
             }
 
             .hero_img {
                 img {
-
+                    opacity: 1;
                     transform: translateX(-50%);
                     margin-left: 50%;
                     margin-top: 5%;

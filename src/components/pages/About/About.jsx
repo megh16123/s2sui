@@ -5,6 +5,7 @@ import Navbar from '../../LayoutComponents/Navbar'
 import Footer from '../../LayoutComponents/footer'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+// import '../../LayoutComponents/aos.css';
 AOS.init();
 function About() {
   // const svg= <HTMLElement><svg className={styles.svg} viewBox="0 0 500 150" preserveAspectRatio="none" ><path className={styles.path} d="M251.92,-17.26 C209.59,70.55 285.77,81.41 251.92,151.48 L500.00,150.00 L500.00,0.00 Z" ></path></svg></HTMLElement>;

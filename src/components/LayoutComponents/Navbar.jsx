@@ -1,10 +1,11 @@
 import React,{useState} from 'react'
 import { NavLink } from 'react-router-dom';
-import styles from './Navbar.module.scss'
 import { HashLink } from 'react-router-hash-link';
 import { useNavigate } from 'react-router-dom';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+// import './aos.css';
+import styles from './Navbar.module.scss'
 AOS.init();
 
 function Navbar() {
@@ -30,7 +31,7 @@ function Navbar() {
             height: "400px",
             flexDirection: "column",
             backgroundColor: "#2bb5b2",
-            width: "100%",
+            width: "101%",
             top: "0%",
             position:"fixed",
             justifyContent: "space-around",
@@ -48,7 +49,7 @@ function Navbar() {
   }
  
   return (
-    <navbar className={styles.navbar} data-aos="fade-down" data-aos-delay="250">
+    <navbar className={styles.navbar}>
         <div className={styles.logo} onClick={redirectHome}>
             <img src="/logo.png" alt="logo" width={70} height={70}></img>
         </div>
