@@ -23,7 +23,7 @@ const Classes = () => {
     }
 
     return (
-        <>
+        <section className='Classes'>
         <Navbar />
         <div className="heroContainer" >
             <div id="hero" />
@@ -45,7 +45,7 @@ const Classes = () => {
         </div>
         <OtherClasses/>
         <Footer />
-    </>
+    </section>
     )
 }
 
