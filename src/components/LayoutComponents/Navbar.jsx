@@ -37,11 +37,11 @@ function Navbar() {
             justifyContent: "space-around",
             alignItems: "center",
             zIndex: "100",
-            height: "99vh"
+            height: "100vh"
   }
 
   const notShow={
-    display: "none",
+    left:'100%',
     width: "100%"
   }
   const nothing={
@@ -61,7 +61,7 @@ function Navbar() {
         <ul className={styles.navlinks} style={width<=768?showlinks?show:notShow:nothing}>
         <li className= {styles.navigationLinks}><NavLink to='/'>Home</NavLink></li>
         <li className= {styles.navigationLinks}><NavLink to='/classes'>Classes</NavLink> </li>
-        <li className= {styles.navigationLinks}><HashLink to='#footer'>Contact Us</HashLink></li>
+        <li className= {styles.navigationLinks}><HashLink smooth to='#footer'>Contact Us</HashLink></li>
         <li className= {styles.navigationLinks}><NavLink to='/about'>About Us</NavLink></li>
         </ul>
         <div className={styles.burger} onClick={()=>setShowLinks(!showlinks)} style={showlinks?fixed:notfixed}>
