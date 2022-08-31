@@ -62,7 +62,7 @@ function Navbar() {
         <li className= {styles.navigationLinks}><NavLink to='/'>Home</NavLink></li>
         <li className= {styles.navigationLinks}><NavLink to='/classes'>Classes</NavLink> </li>
         <li className= {styles.navigationLinks}><NavLink to='/about'>About Us</NavLink></li>
-        <li className= {styles.navigationLinks}><HashLink smooth to='#footer'>Contact Us</HashLink></li>
+        <li className= {styles.navigationLinks}><HashLink to='#footer'>Contact Us</HashLink></li>
         </ul>
         <div className={styles.burger} onClick={()=>setShowLinks(!showlinks)} style={showlinks?fixed:notfixed}>
           <div className={styles.line} style={showlinks?whiteBurger:blackBurger}></div>
