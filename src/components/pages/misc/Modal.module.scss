@@ -1,7 +1,14 @@
 :root {
     --margin_stair: 8.5%;
 }
-
+@keyframes slideInFromLeft {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
 
 .modalBackground {
     border: 2px solid black;
@@ -25,6 +32,7 @@
         font-size: 1.2rem;
         font-weight: 500;
         box-shadow: 13px 13px 20px #b8b8b8;
+        animation: 1s ease-out 0s 1 slideInFromLeft;
 
 
         &:hover {
@@ -34,6 +42,49 @@
 
 
         }
+}
+.enrollFormModal{
+    width: 60%;
+    height: max-content;
+    border-radius: 10px;
+    position: fixed;
+    position: relative; 
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    padding:5%;
+    .modalTitle {
+        color: white;
+        font-size: calc(1rem + 20%);
+        font-weight: 500;
+    }
+
+    .closeButton {
+        color: white;
+        font-size: 1.2rem;
+        font-weight: 300;
+        border: none;
+        background-color: transparent;
+        height: 2.5%;
+        width: 2.5%;
+        padding: .5%;
+        cursor: pointer;
+        margin-right: 2%;
+    }
+
+    .modalHeader {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        padding: .25%;
+        padding-left: 2%;
+        padding-right: 2%;
+        background-color: #FFA115;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        box-shadow: 0px 0px 0px 1px gray inset;
+    }
 }
 
 .modal, .contactFormModal, .classesModal {
@@ -95,6 +146,7 @@
     transition: transform 0.1s ease-in-out;
     animation: buttonAnimation 1.5s infinite;
     animation-direction: alternate;
+    animation: 1s ease-out 0s 1 slideInFromLeft;
 }
 
 .openOtherClassButton{
@@ -105,9 +157,6 @@
 .openButtonClasses{
     display: block;
     margin-top: 10%;
-    // position: relative;
-    // top:-50%;
-    // // margin-bottom: 10%;
     margin-left:auto;
     margin-right:auto;
 }
@@ -144,6 +193,7 @@
     transition: transform 0.1s ease-in-out;
     animation: buttonAnimation 1.5s infinite;
     animation-direction: alternate;
+    animation: 1s ease-out 0s 1 slideInFromLeft;
     &:hover{
         transform: scale(1.1);
     }
@@ -154,6 +204,15 @@
     left: 20%;
     transform: translate(0, 0);
 }
+
+@keyframes slideInFromLeft {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
 @keyframes buttonAnimation {
     from {
         transform: scale(1);
@@ -190,6 +249,10 @@
     .contactFormModal{
         width:100%;
         left:0%;
+    }
+    .enrollFormModal{
+        width:100%;
+        left:-10%;
     }
 
     .openOtherClassButton{

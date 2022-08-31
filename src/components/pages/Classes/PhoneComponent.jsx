@@ -9,12 +9,12 @@ function PhoneComponent() {
     <Splide options={{
         responsive: true,
 direction: 'ttb',
-height   : '80vh',
+height   : '65vh',
 wheel    : true,
 releaseWheel: true
 } }
 >
-    <SplideSlide>
+    <SplideSlide >
         <div className='phone-scroll'>
     <h2>Web Developer</h2>
             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad beatae provident expedita mollitia magni

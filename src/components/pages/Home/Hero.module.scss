@@ -286,7 +286,6 @@
     .sixth {
         display: flex;
         justify-content: center;
-        // height: 80vh;
         padding: 7% 10%;
         flex-direction: column;
 
@@ -384,13 +383,17 @@
             // height: 115vh !important;
             flex-direction: column !important;
             margin: 0% 5%;
-            h3,h1{
+            h3{
                 font-size: 1.6rem;
             }
-
+            
             .hero_content {
+                .section2heading{
+                    font-size: 1.8rem;
+                }
                 width: 100%;
                 .why_us{
+                    margin: 2% 0;
                     font-size: 0.9rem;
                 }
             }

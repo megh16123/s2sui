@@ -81,7 +81,7 @@ useCountUp({
 
       <div className={styles.just_for_margin}>
       </div>
-      <section data-aos="fade-up" className={styles.hero_section} id={styles.section2} style={{ flexDirection: 'row-reverse', height: '110vh' }}>
+      <section data-aos="fade-up" className={styles.hero_section} id={styles.section2} style={{ flexDirection: 'row-reverse', height: 'max-content' }}>
         <div className={styles.hero_content}>
           <h1 className={styles.section2heading}>Our Platform is Crafted Specificaly for students</h1>
           <h3>Why Choose Us</h3>
