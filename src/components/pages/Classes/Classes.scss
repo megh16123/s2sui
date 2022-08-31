@@ -10,7 +10,9 @@
     box-sizing: border-box;
     
 }
-
+.heroContainer{
+    overflow-x: hidden;
+}
 #hero {
     position: relative;
     width: 100%;
