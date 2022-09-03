@@ -1,6 +1,7 @@
 :root {
     --margin_stair: 8.5%;
 }
+
 @keyframes slideInFromLeft {
     0% {
       transform: translateX(-100%);
@@ -13,12 +14,18 @@
 .modalBackground {
     border: 2px solid black;
     position: fixed;
-    z-index: 5;
+    z-index: 1001;
     width: 100vw;
     height: 150vh;
     top: 0%;
     left: 0%;
     background-color: rgba(128, 128, 128, 0.77);
+}
+
+.modalParent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .EnrollButton{
@@ -49,10 +56,13 @@
     border-radius: 10px;
     position: fixed;
     position: relative; 
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 10;
+    // left: 50%;
+    // top: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    position: fixed;
+    // transform: translate(-50%, -50%);
+    z-index: 1002;
     padding:5%;
     .modalTitle {
         color: white;
@@ -75,9 +85,8 @@
 
     .modalHeader {
         display: flex;
-        align-items: flex-end;
+        align-items: center;
         justify-content: space-between;
-        padding: .25%;
         padding-left: 2%;
         padding-right: 2%;
         background-color: #FFA115;
@@ -93,7 +102,7 @@
     border-radius: 10px;
     position: fixed;
     transform: translate(20%, -60%);
-    z-index: 10;
+    z-index: 1002;
     padding:5%;
 
     .modalTitle {
@@ -230,6 +239,52 @@
     left:20%;
     transform: translate(0,0);
 }
+
+@media (max-width:1281px) {
+    .enrollFormModal{
+        left: 1%;
+        top: -5%;
+        width: auto;
+    }
+ }
+@media (max-width:1025px) {
+    .enrollFormModal{
+        left: 1%;
+        top: -10%;
+        width: auto;
+    }
+ }
+@media (max-width:1000px) {
+    .enrollFormModal{
+        left: 1%;
+        top: -5%;
+        width: auto;
+    }
+ }
+@media (max-width:920px) {
+    .enrollFormModal{
+        left: 1%;
+        top: -2%;
+        width: auto;
+    }
+ }
+@media (max-width:850px) {
+    .enrollFormModal{
+     width: auto;
+     height: max-content;
+     top: -2%;
+     left: 5%;
+    }
+ }
+@media (max-width:800px) {
+    .enrollFormModal{
+     width: auto;
+     height: max-content;
+     top: -2%;
+     left: 1%;
+    }
+ }
+
 @media (max-width:1150px){
     .openOtherClassButton{
         margin-bottom: 25%;
@@ -240,6 +295,7 @@
         margin-bottom: 30%;
     }
 }
+
 @media (max-width:768px){
     .modal{
         width:80%;
@@ -252,7 +308,9 @@
     }
     .enrollFormModal{
         width:100%;
-        left:-10%;
+       top: 4%;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .openOtherClassButton{

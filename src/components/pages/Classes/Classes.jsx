@@ -23,6 +23,7 @@ const Classes = () => {
     }
 
     return (
+        <>
         <section className='Classes'>
         <Navbar />
         <div className="heroContainer" >
@@ -44,8 +45,10 @@ const Classes = () => {
             <Link to="./cd" className="card card-5" data-aos="fade-left"  data-aos-duration="1500">Class 2 - 9th</Link>
         </div>
         <OtherClasses/>
-        <Footer />
+
     </section>
+        <Footer />
+    </>
     )
 }
 

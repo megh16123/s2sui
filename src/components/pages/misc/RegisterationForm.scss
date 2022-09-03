@@ -109,6 +109,16 @@
     }
 }
 
+@media (max-width:1025px){
+   
+    .classCheckBoxes {
+        margin: auto;
+
+        div {
+            margin-top: 2%;
+        }
+    }
+}
 @media (max-width:768px){
     .checkBoxLabel{
         margin-left: calc(9% + 5vw)!important;

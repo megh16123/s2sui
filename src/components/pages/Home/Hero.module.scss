@@ -46,6 +46,8 @@
             .buttons {
                 margin: 5% auto;
                 display: flex;
+                // justify-content: center;
+                align-items: center;
 
                 .button_default {
                     background-color: #ffa115;
